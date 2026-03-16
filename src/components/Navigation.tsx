@@ -7,6 +7,7 @@ import Link from "next/link";
 
 const navLinks = [
   { href: "#home", label: "Home" },
+  { href: "#case-study", label: "Case Study" },
   { href: "#demos", label: "Demos" },
   { href: "#about", label: "About" },
   { href: "https://github.com/hayalstech", label: "GitHub", external: true },

@@ -8,27 +8,27 @@ import { Layers, LayoutGrid, Wrench, Github } from "lucide-react";
 const highlights = [
   {
     icon: Layers,
-    title: "Full-Stack Applications",
+    title: "Outcome-led delivery",
     description:
-      "Modern projects with frontend UI and backend logic working seamlessly together.",
+      "Engineering choices tied to measurable wins: speed, engagement, and conversion.",
   },
   {
     icon: LayoutGrid,
-    title: "Clean Architecture",
+    title: "Scalable UI systems",
     description:
-      "Modular components and structured APIs for maintainable, scalable code.",
+      "Reusable components and patterns that keep teams moving fast as features grow.",
   },
   {
     icon: Wrench,
-    title: "Real-World Tools",
+    title: "Performance budgets",
     description:
-      "Dashboards, utilities, and productivity apps solving practical problems.",
+      "Core Web Vitals focus to reduce friction in critical user flows.",
   },
   {
     icon: Github,
-    title: "GitHub Ready",
+    title: "Production-ready practices",
     description:
-      "Source code documented and deployed with CI/CD best practices.",
+      "Clean implementations built for handoff, iteration, and long-term maintainability.",
   },
 ];
 
@@ -60,11 +60,7 @@ export default function FeaturedHighlights() {
 
   return (
     <section className="section-padding relative overflow-hidden" ref={ref}>
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
-        style={{ backgroundImage: "url('/images/pexels-canvy-mockups-56805-205316.jpg')" }}
-      />
+      <div className="absolute inset-0 opacity-60 [background:radial-gradient(800px_circle_at_80%_30%,rgba(0,0,0,0.06),transparent_55%)]" />
 
       <div className="container-premium relative z-10">
         <motion.div
@@ -74,11 +70,10 @@ export default function FeaturedHighlights() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Featured Highlights
+            What you’re hiring for
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            What makes these projects stand out in the modern web development
-            landscape
+            Senior execution that protects performance while shipping polished UX
           </p>
         </motion.div>
 

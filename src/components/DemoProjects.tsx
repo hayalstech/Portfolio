@@ -90,11 +90,7 @@ export default function DemoProjects() {
       className="section-padding relative overflow-hidden"
       ref={ref}
     >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
-        style={{ backgroundImage: "url('/images/code-abstract.jpg')" }}
-      />
+      <div className="absolute inset-0 opacity-60 [background:radial-gradient(800px_circle_at_20%_30%,rgba(0,0,0,0.06),transparent_55%)]" />
 
       <div className="container-premium relative z-10">
         <motion.div

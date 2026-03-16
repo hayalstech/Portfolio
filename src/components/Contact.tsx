@@ -39,11 +39,7 @@ export default function Contact() {
       className="section-padding relative overflow-hidden"
       ref={ref}
     >
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
-        style={{ backgroundImage: "url('/images/tech-abstract.jpg')" }}
-      />
+      <div className="absolute inset-0 opacity-60 [background:radial-gradient(900px_circle_at_50%_20%,rgba(0,0,0,0.06),transparent_60%)]" />
 
       <div className="container-premium relative z-10">
         <motion.div
@@ -56,8 +52,8 @@ export default function Contact() {
             Let&apos;s Build Something
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            If you&apos;re interested in collaborating or hiring me for a
-            project, feel free to reach out.
+            Stop compromising on speed—invite me and I’ll map a clear plan to hit
+            your UX and performance targets.
           </p>
         </motion.div>
 

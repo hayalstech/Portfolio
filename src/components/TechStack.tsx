@@ -46,11 +46,7 @@ export default function TechStack() {
 
   return (
     <section className="section-padding relative overflow-hidden" ref={ref}>
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
-        style={{ backgroundImage: "url('/images/pexels-joaojesusdesign-925743.jpg')" }}
-      />
+      <div className="absolute inset-0 opacity-60 [background:radial-gradient(800px_circle_at_50%_20%,rgba(0,0,0,0.06),transparent_55%)]" />
 
       <div className="container-premium relative z-10">
         <motion.div
@@ -61,7 +57,7 @@ export default function TechStack() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Tech Stack</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Technologies and tools used to build modern full-stack applications
+            Modern tooling used to ship fast, maintainable product UIs
           </p>
         </motion.div>
 

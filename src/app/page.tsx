@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
+import CaseStudy from "@/components/CaseStudy";
 import TechStack from "@/components/TechStack";
 import FeaturedHighlights from "@/components/FeaturedHighlights";
 import DemoProjects from "@/components/DemoProjects";
@@ -12,6 +13,7 @@ export default function Home() {
     <main className="min-h-screen bg-white">
       <Navigation />
       <Hero />
+      <CaseStudy />
       <TechStack />
       <FeaturedHighlights />
       <DemoProjects />

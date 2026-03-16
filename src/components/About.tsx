@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { MapPin, Code, Server } from "lucide-react";
-import Image from "next/image";
 
 const frontendSkills = ["React", "Next.js", "Tailwind CSS"];
 const backendSkills = ["API Development", "Server Logic", "Data Processing"];
@@ -29,19 +28,24 @@ export default function About() {
 
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            {/* Image */}
+            {/* Visual */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl"
+              className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl border border-gray-100 bg-gradient-to-br from-black via-neutral-900 to-black"
             >
-              <Image
-                src="/images/workspace.jpg"
-                alt="Developer workspace"
-                fill
-                className="object-cover"
-              />
+              <div className="absolute inset-0 opacity-25 [background:radial-gradient(900px_circle_at_30%_20%,rgba(59,130,246,0.55),transparent_55%)]" />
+              <div className="absolute inset-0 opacity-20 [background:radial-gradient(700px_circle_at_70%_70%,rgba(255,255,255,0.20),transparent_60%)]" />
+              <div className="absolute inset-0 p-10 flex flex-col justify-end">
+                <p className="text-white text-2xl font-semibold tracking-tight">
+                  Frontend performance & UX engineering
+                </p>
+                <p className="text-gray-300 text-sm mt-2 max-w-sm">
+                  Core Web Vitals, scalable UI systems, and conversion-focused
+                  experiences for modern product teams.
+                </p>
+              </div>
             </motion.div>
 
             {/* Content */}
@@ -62,15 +66,14 @@ export default function About() {
                 <p className="text-lg">
                   Hi, I&apos;m{" "}
                   <span className="text-black font-semibold">Hayalsew Asrat</span>
-                  , a developer based in Addis Ababa, Ethiopia. I build modern
-                  full-stack web applications with clean interfaces and scalable
-                  backend logic.
+                  , a frontend-focused full-stack developer based in Addis Ababa,
+                  Ethiopia. I design and build fast, reliable UIs that help
+                  products convert and scale.
                 </p>
                 <p>
-                  My focus is creating tools that combine great user experience
-                  with reliable backend functionality. Every project in this
-                  portfolio demonstrates real backend capabilities—not just
-                  frontend presentation.
+                  My work centers on Core Web Vitals, clean component systems,
+                  and performance budgets—so the UX stays smooth as features and
+                  traffic grow.
                 </p>
               </div>
 

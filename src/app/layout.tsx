@@ -13,13 +13,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DevLaunch | Hayalsew Asrat - Full-Stack Developer",
-  description: "Modern full-stack web applications built by Hayalsew Asrat. Portfolio showcasing interactive dashboards, productivity tools, and utilities.",
-  keywords: ["full-stack developer", "Next.js", "React", "Tailwind CSS", "web development", "Hayalsew Asrat"],
+  title: "Hayalsew Asrat | Senior Full-Stack Product Engineer",
+  description:
+    "Scalable SaaS & marketplace solutions: faster APIs, lower infra costs, and end-to-end MVP delivery—from wireframes to secure production launch.",
+  keywords: [
+    "full-stack product engineer",
+    "SaaS development",
+    "marketplace development",
+    "Next.js",
+    "React",
+    "Node.js",
+    "Redis caching",
+    "API performance",
+    "scalable architecture",
+    "Hayalsew Asrat",
+  ],
   authors: [{ name: "Hayalsew Asrat" }],
   openGraph: {
-    title: "DevLaunch | Hayalsew Asrat",
-    description: "Modern full-stack web applications portfolio",
+    title: "Hayalsew Asrat | Senior Full-Stack Product Engineer",
+    description:
+      "Scalable SaaS & marketplace solutions with measurable speed, cost, and delivery wins.",
     type: "website",
   },
 };
