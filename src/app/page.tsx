@@ -2,6 +2,8 @@ import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import CaseStudy from "@/components/CaseStudy";
 import TechStack from "@/components/TechStack";
+import PortfolioGallery from "@/components/PortfolioGallery";
+import Services from "@/components/Services";
 import FeaturedHighlights from "@/components/FeaturedHighlights";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
@@ -19,6 +21,8 @@ export default function Home() {
       <Hero />
       <CaseStudy />
       <TechStack />
+      <PortfolioGallery />
+      <Services />
       <CurrencyConverter />
       <QRCodeGenerator />
       <WeatherDashboard />
