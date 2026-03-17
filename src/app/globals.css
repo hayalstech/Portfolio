@@ -60,3 +60,33 @@ body {
 .container-premium {
   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
+
+/* Background image utilities */
+.bg-image-overlay {
+  @apply absolute inset-0 bg-cover bg-center bg-no-repeat;
+}
+
+.bg-image-blend {
+  @apply absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 mix-blend-overlay;
+}
+
+.gradient-overlay-dark {
+  @apply absolute inset-0 bg-gradient-to-b from-black/80 via-neutral-950/90 to-black/95;
+}
+
+.gradient-overlay-light {
+  @apply absolute inset-0 bg-gradient-to-b from-white/80 via-gray-50/90 to-white/95;
+}
+
+/* Image loading optimization */
+.bg-image-loading {
+  @apply transition-opacity duration-1000 ease-in-out;
+}
+
+/* Responsive background images */
+@media (max-width: 768px) {
+  .bg-image-mobile {
+    background-size: cover;
+    background-position: center;
+  }
+}

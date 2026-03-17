@@ -18,22 +18,29 @@ export default function CaseStudy() {
     <section
       id="case-study"
       ref={ref}
-      className="section-padding bg-gray-50/60 border-y border-gray-100"
+      className="section-padding relative overflow-hidden"
     >
-      <div className="container-premium">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
+        style={{ backgroundImage: 'url(/images/17973908.jpg)' }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/50 to-white/60" />
+      
+      <div className="container-premium relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto text-center mb-12"
         >
-          <p className="text-xs font-semibold tracking-wider uppercase text-gray-500 mb-3">
+          <p className="text-xs font-semibold tracking-wider uppercase text-gray-900 mb-3">
             Featured case study
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-gray-900">
             Scalable SaaS rebuild with measurable speed + cost wins
           </h2>
-          <p className="text-gray-600 leading-relaxed">
+          <p className="text-gray-800 leading-relaxed">
             The platform needed faster APIs, lower infrastructure costs, and a
             secure path from wireframes to production. I optimized data access
             + caching, modernized services, and shipped a production-ready MVP

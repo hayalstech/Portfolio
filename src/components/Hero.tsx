@@ -33,8 +33,16 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden"
     >
-      {/* Premium gradient background (no external images) */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-neutral-950 to-black" />
+      {/* Background images with overlay effects */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url(/images/hero-bg.jpg)' }}
+      />
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 mix-blend-overlay"
+        style={{ backgroundImage: 'url(/images/code-abstract.jpg)' }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-neutral-950/90 to-black/95" />
       <div className="absolute inset-0 opacity-40 [background:radial-gradient(1200px_circle_at_50%_0%,rgba(255,255,255,0.18),transparent_55%)]" />
       <div className="absolute inset-0 opacity-20 [background:radial-gradient(900px_circle_at_20%_60%,rgba(59,130,246,0.35),transparent_55%)]" />
 

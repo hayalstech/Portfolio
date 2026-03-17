@@ -46,7 +46,12 @@ export default function TechStack() {
 
   return (
     <section className="section-padding relative overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 opacity-60 [background:radial-gradient(800px_circle_at_50%_20%,rgba(0,0,0,0.06),transparent_55%)]" />
+      {/* Background images for TechStack section */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
+        style={{ backgroundImage: 'url(/images/tech-abstract.jpg)' }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/50 to-white/60" />
 
       <div className="container-premium relative z-10">
         <motion.div
@@ -55,8 +60,8 @@ export default function TechStack() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Tech Stack</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Tech Stack</h2>
+          <p className="text-gray-800 max-w-2xl mx-auto">
             Modern tooling used to ship fast, maintainable product UIs
           </p>
         </motion.div>

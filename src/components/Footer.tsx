@@ -30,13 +30,19 @@ const developerLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-200">
-      <div className="container-premium py-16">
+    <footer className="relative bg-white border-t border-gray-200">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
+        style={{ backgroundImage: 'url(/images/Footerbg.jpg)' }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/50 to-white/60" />
+      <div className="relative z-10 container-premium py-16">
         <div className="grid md:grid-cols-3 gap-12">
           {/* Brand Column */}
           <div>
             <Link href="#home" className="text-2xl font-bold mb-4 block">
-              DevLaunch
+              StackShift
             </Link>
             <p className="text-gray-600 text-sm leading-relaxed">
               Modern full-stack web applications built by Hayalsew Asrat.
@@ -91,7 +97,7 @@ export default function Footer() {
         {/* Divider */}
         <div className="border-t border-gray-200 mt-12 pt-8">
           <p className="text-center text-gray-500 text-sm">
-            © 2026 DevLaunch. Built by Hayalsew Asrat.
+            © 2026 StackShift. Built by Hayalsew Asrat.
           </p>
         </div>
       </div>

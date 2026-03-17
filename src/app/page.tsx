@@ -3,10 +3,14 @@ import Hero from "@/components/Hero";
 import CaseStudy from "@/components/CaseStudy";
 import TechStack from "@/components/TechStack";
 import FeaturedHighlights from "@/components/FeaturedHighlights";
-import DemoProjects from "@/components/DemoProjects";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import CurrencyConverter from "@/components/CurrencyConverter";
+import QRCodeGenerator from "@/components/QRCodeGenerator";
+import WeatherDashboard from "@/components/WeatherDashboard";
+import KanbanBoard from "@/components/KanbanBoard";
+import ExpenseTracker from "@/components/ExpenseTracker";
 
 export default function Home() {
   return (
@@ -15,8 +19,12 @@ export default function Home() {
       <Hero />
       <CaseStudy />
       <TechStack />
+      <CurrencyConverter />
+      <QRCodeGenerator />
+      <WeatherDashboard />
+      <KanbanBoard />
+      <ExpenseTracker />
       <FeaturedHighlights />
-      <DemoProjects />
       <About />
       <Contact />
       <Footer />

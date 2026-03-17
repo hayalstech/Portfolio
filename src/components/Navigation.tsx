@@ -43,7 +43,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="#home" className="flex items-center gap-2">
             <span className="text-xl md:text-2xl font-bold tracking-tight">
-              DevLaunch
+              StackShift
             </span>
           </Link>
 

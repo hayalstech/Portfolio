@@ -13,7 +13,13 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="section-padding bg-gray-50/50" ref={ref}>
+    <section id="about" className="section-padding relative overflow-hidden" ref={ref}>
+      {/* Background images for About section */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
+        style={{ backgroundImage: 'url(/images/Aboutbg.jpg)' }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/50 to-white/60" />
       <div className="container-premium">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -21,7 +27,7 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
             About the Developer
           </h2>
         </motion.div>
@@ -62,7 +68,7 @@ export default function About() {
               </div>
 
               {/* Bio */}
-              <div className="space-y-4 text-gray-600 leading-relaxed mb-8">
+              <div className="space-y-4 text-gray-800 leading-relaxed mb-8">
                 <p className="text-lg">
                   Hi, I&apos;m{" "}
                   <span className="text-black font-semibold">Hayalsew Asrat</span>
@@ -83,7 +89,7 @@ export default function About() {
                 <div>
                   <div className="flex items-center gap-2 mb-4">
                     <Code className="w-5 h-5 text-gray-700" />
-                    <h3 className="font-semibold">Frontend</h3>
+                    <h3 className="font-semibold text-gray-900">Frontend</h3>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {frontendSkills.map((skill) => (
@@ -101,7 +107,7 @@ export default function About() {
                 <div>
                   <div className="flex items-center gap-2 mb-4">
                     <Server className="w-5 h-5 text-gray-700" />
-                    <h3 className="font-semibold">Backend</h3>
+                    <h3 className="font-semibold text-gray-900">Backend</h3>
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {backendSkills.map((skill) => (

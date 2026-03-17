@@ -36,22 +36,29 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="section-padding relative overflow-hidden"
       ref={ref}
+      className="section-padding relative overflow-hidden"
     >
-      <div className="absolute inset-0 opacity-60 [background:radial-gradient(900px_circle_at_50%_20%,rgba(0,0,0,0.06),transparent_60%)]" />
-
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
+        style={{ backgroundImage: 'url(/images/hedd.jpg)' }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/50 to-white/60" />
+      
       <div className="container-premium relative z-10">
+        <div className="absolute inset-0 opacity-60 [background:radial-gradient(900px_circle_at_50%_20%,rgba(0,0,0,0.06),transparent_60%)]" />
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
             Let&apos;s Build Something
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-800 max-w-2xl mx-auto">
             Stop compromising on speed—invite me and I’ll map a clear plan to hit
             your UX and performance targets.
           </p>
