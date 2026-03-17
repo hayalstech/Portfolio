@@ -41,9 +41,9 @@ for (let i = 0; i < 25; i++) {
     id: crypto.randomUUID(),
     amount,
     type,
-    category,
-    description: `${category} - ${type === "income" ? "Payment" : "Purchase"}`,
-    date: date.toISOString().split("T")[0],
+    category: category!,
+    description: `${category!} - ${type === "income" ? "Payment" : "Purchase"}`,
+    date: date.toISOString().split("T")[0] as string,
     createdAt: date.toISOString(),
   };
 

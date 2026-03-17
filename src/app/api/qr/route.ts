@@ -5,13 +5,13 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const {
-      text,
+      text: qrText,
       size = 300,
       format = "png",
       color = { dark: "#000000", light: "#ffffff" },
     } = body;
 
-    if (!text) {
+    if (!qrText) {
       return NextResponse.json(
         { error: "Text is required to generate QR code" },
         { status: 400 }
@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     // Generate QR code on the server
     const qrOptions = {
       width: validSize,
-      margin: 2,
+      margin: 1,
       color: {
         dark: color.dark,
         light: color.light,
@@ -32,19 +32,19 @@ export async function POST(request: NextRequest) {
     };
 
     // Generate QR code as data URL
-    const dataUrl = await QRCode.toDataURL(text, qrOptions);
+    const dataUrl = await QRCode.toDataURL(qrText, qrOptions);
 
     // Extract base64 data
     const base64Data = dataUrl.split(",")[1];
 
     return NextResponse.json({
       success: true,
-      text,
+      text: qrText,
       format,
       size: validSize,
       dataUrl,
       base64: base64Data,
-      downloadUrl: `/api/qr/download?data=${encodeURIComponent(base64Data)}&format=${format}&text=${encodeURIComponent(text.substring(0, 20))}`,
+      downloadUrl: `/api/qr/download?data=${encodeURIComponent(base64Data)}&format=${format}&text=${encodeURIComponent(qrText.substring(0, 20))}`,
       timestamp: new Date().toISOString(),
     });
   } catch (error) {

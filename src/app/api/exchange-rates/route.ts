@@ -38,7 +38,7 @@ async function fetchExchangeRates() {
   }
 }
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   const now = Date.now();
   
   // Check if we have cached rates that are still valid

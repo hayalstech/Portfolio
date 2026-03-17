@@ -39,7 +39,7 @@ const exchangeRates: Record<string, number> = {
 // Generate historical data for charts
 function generateHistoricalData(base: string, target: string, days: number) {
   const data = [];
-  const baseRate = exchangeRates[target] / exchangeRates[base];
+  const baseRate = (exchangeRates[target as keyof typeof exchangeRates] || 0) / (exchangeRates[base as keyof typeof exchangeRates] || 1);
   const today = new Date();
 
   for (let i = days - 1; i >= 0; i--) {
@@ -79,7 +79,7 @@ export async function GET(request: NextRequest) {
 
     if (cached) {
       return NextResponse.json({
-        ...cached,
+        ...cached as any,
         cached: true,
         timestamp: new Date().toISOString(),
       });
