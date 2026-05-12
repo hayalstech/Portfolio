@@ -19,7 +19,7 @@ import ExpenseTracker from "@/components/ExpenseTracker";
 export default function Home() {
   return (
     <PageEntrance>
-      <main className="min-h-screen bg-white">
+      <main className="min-h-screen">
         <Navigation />
         <Hero />
         <ScrollRevealSection>

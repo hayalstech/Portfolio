@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: linear-gradient(135deg, #f0f4ff 0%, #e6eefa 50%, #f0f4ff 100%);
   --foreground: #0a0a0a;
-  /* ~7:1 on white — stronger than generic gray-500 for WCAG AA body text */
-  --secondary-text: #374151;
-  --border: #e5e7eb;
+  /* ~7:1 on light background — stronger than generic gray-500 for WCAG AA body text */
+  --secondary-text: #1f2937;
+  --border: #d1d5db;
   --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --card-shadow-hover: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
@@ -29,6 +29,7 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
 ::selection {
