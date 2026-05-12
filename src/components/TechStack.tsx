@@ -60,8 +60,8 @@ export default function TechStack() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 drop-shadow-sm">Tech Stack</h2>
-          <p className="text-gray-800 max-w-2xl mx-auto drop-shadow-sm">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black drop-shadow-sm">Tech Stack</h2>
+          <p className="text-black max-w-2xl mx-auto drop-shadow-sm">
             Modern tools and frameworks I use to build scalable applications
           </p>
         </motion.div>
@@ -88,7 +88,7 @@ export default function TechStack() {
                   className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors"
                 >
                   <span className="text-xl">{tech.icon}</span>
-                  <span className="font-medium text-sm">{tech.name}</span>
+                  <span className="font-medium text-sm text-black">{tech.name}</span>
                 </motion.div>
               ))}
             </div>
@@ -115,7 +115,7 @@ export default function TechStack() {
                   className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors"
                 >
                   <span className="text-xl">{tech.icon}</span>
-                  <span className="font-medium text-sm">{tech.name}</span>
+                  <span className="font-medium text-sm text-black">{tech.name}</span>
                 </motion.div>
               ))}
             </div>
