@@ -15,6 +15,7 @@ import QRCodeGenerator from "@/components/QRCodeGenerator";
 import WeatherDashboard from "@/components/WeatherDashboard";
 import KanbanBoard from "@/components/KanbanBoard";
 import ExpenseTracker from "@/components/ExpenseTracker";
+import ComingSoon from "@/components/ComingSoon";
 
 export default function Home() {
   return (
@@ -30,6 +31,9 @@ export default function Home() {
         </ScrollRevealSection>
         <ScrollRevealSection>
           <LiveDemos />
+        </ScrollRevealSection>
+        <ScrollRevealSection>
+          <ComingSoon />
         </ScrollRevealSection>
         <ScrollRevealSection>
           <Services />

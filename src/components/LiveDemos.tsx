@@ -10,19 +10,19 @@ const demos = [
     label: "Forum",
     href: "https://bejewelled-torte-5871b3.netlify.app/auth",
     icon: MessagesSquare,
-    ariaLabel: "Open Evangadi Forum demo",
+    ariaLabel: "Open Evangadi Forum project",
   },
   {
     label: "Shop",
     href: "https://gregarious-malasada-9133b1.netlify.app/",
     icon: ShoppingCart,
-    ariaLabel: "Open Amazon clone demo",
+    ariaLabel: "Open Amazon clone project",
   },
   {
     label: "Real Estate",
     href: "https://mahi-real-estate.netlify.app/",
     icon: Building2,
-    ariaLabel: "Open Mahi Real Estate demo",
+    ariaLabel: "Open Mahi Real Estate project",
   },
 ] as const;
 
@@ -45,19 +45,16 @@ export default function LiveDemos() {
 
       <div className="container-premium relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-12 md:mb-16"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
         >
-          <h2
-            id="live-demos-heading"
-            className="text-3xl md:text-4xl font-bold mb-4 text-gray-900"
-          >
-            Live Demos
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+            Projects
           </h2>
-          <p className="text-gray-800 max-w-2xl mx-auto leading-relaxed">
-            Featured builds—interactive products you can try in your browser.
+          <p className="text-gray-800 max-w-2xl mx-auto">
+            Explore my live projects demonstrating full-stack development skills
           </p>
         </motion.div>
 
