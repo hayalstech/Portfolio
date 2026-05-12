@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Gauge, Zap, Server, ArrowRight } from "lucide-react";
 
 const stats = [
@@ -10,8 +10,35 @@ const stats = [
   { label: "MVP delivery", value: "6 weeks", icon: Gauge },
 ];
 
+function AnimatedCounter({ value, duration = 1.5 }: { value: string; duration?: number }) {
+  const [displayValue, setDisplayValue] = useState("0");
+
+  useEffect(() => {
+    const numericValue = parseInt(value.replace(/[^0-9]/g, ""));
+    const suffix = value.replace(/[0-9]/g, "");
+
+    let start = 0;
+    const end = numericValue;
+    const increment = end / (duration * 60);
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setDisplayValue(value);
+        clearInterval(timer);
+      } else {
+        setDisplayValue(`${Math.floor(start)}${suffix}`);
+      }
+    }, 1000 / 60);
+
+    return () => clearInterval(timer);
+  }, [value, duration]);
+
+  return <span>{displayValue}</span>;
+}
+
 export default function CaseStudy() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-120px" });
 
   return (
@@ -49,19 +76,22 @@ export default function CaseStudy() {
         </motion.div>
 
         <div className="max-w-5xl mx-auto grid lg:grid-cols-3 gap-6 mb-10">
-          {stats.map((s) => (
+          {stats.map((s, index) => (
             <motion.div
               key={s.label}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6"
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ y: -4, scale: 1.02 }}
+              className="card-interactive bg-white rounded-2xl border-2 border-gray-200 shadow-sm p-6 hover:border-gray-900 hover:shadow-lg transition-all duration-300"
             >
               <div className="w-11 h-11 rounded-xl bg-black text-white flex items-center justify-center mb-4">
                 <s.icon className="w-5 h-5" />
               </div>
-              <p className="text-sm text-gray-500 mb-1">{s.label}</p>
-              <p className="text-2xl font-bold tracking-tight">{s.value}</p>
+              <p className="text-sm text-gray-600 mb-1 font-medium">{s.label}</p>
+              <p className="text-2xl font-bold tracking-tight text-gray-900">
+                {isInView ? <AnimatedCounter value={s.value} /> : s.value}
+              </p>
             </motion.div>
           ))}
         </div>
@@ -72,9 +102,9 @@ export default function CaseStudy() {
           transition={{ duration: 0.6, delay: 0.05 }}
           className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-6"
         >
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
-            <h3 className="font-semibold mb-4">What changed (technical)</h3>
-            <ul className="text-sm text-gray-600 space-y-2 leading-relaxed">
+          <div className="card-interactive bg-white rounded-2xl border-2 border-gray-200 shadow-sm p-8 hover:border-gray-900 hover:shadow-lg transition-all duration-300">
+            <h3 className="font-semibold mb-4 text-gray-900">What changed (technical)</h3>
+            <ul className="text-sm text-gray-700 space-y-2 leading-relaxed">
               <li>- Optimized DB queries and added Redis caching.</li>
               <li>
                 - Migrated a legacy monolith toward microservices/serverless to
@@ -82,12 +112,12 @@ export default function CaseStudy() {
               </li>
               <li>- Delivered an end-to-end MVP with secure production rollout.</li>
             </ul>
-            <div className="mt-6 text-xs text-gray-500">
+            <div className="mt-6 text-xs text-gray-600">
               Stack: Next.js, React, Node.js, Redis, Postgres/MongoDB
             </div>
           </div>
 
-          <div className="bg-black rounded-2xl shadow-sm p-8 text-white">
+          <div className="card-interactive bg-black rounded-2xl shadow-sm p-8 text-white border-2 border-gray-800 hover:border-gray-600 hover:shadow-lg transition-all duration-300">
             <h3 className="font-semibold mb-4">Business impact</h3>
             <ul className="text-sm text-gray-200 space-y-2 leading-relaxed">
               <li>- 50% faster API responses via query optimization + Redis.</li>
@@ -96,9 +126,9 @@ export default function CaseStudy() {
             </ul>
             <a
               href="#contact"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-white underline underline-offset-4 hover:opacity-90"
+              className="btn-interactive mt-6 inline-flex items-center gap-2 text-sm font-medium text-white underline underline-offset-4 hover:opacity-90"
             >
-              Let’s turn your product into a scalable growth engine
+              Let's turn your product into a scalable growth engine
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>

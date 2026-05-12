@@ -27,7 +27,7 @@ const demos = [
 ] as const;
 
 export default function LiveDemos() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
@@ -76,12 +76,12 @@ export default function LiveDemos() {
                 transition={{
                   duration: 0.5,
                   delay: index * 0.08,
-                  ease: [0.22, 1, 0.36, 1],
+                  ease: [0.22, 1, 0.36, 1] as const,
                 }}
                 style={{ transform: "translateZ(0)" }}
-                whileHover={{ scale: 1.03 }}
+                whileHover={{ scale: 1.05, y: -4 }}
                 whileTap={{ scale: 0.98 }}
-                className="group flex flex-1 min-w-[200px] sm:min-w-[220px] max-w-full items-center justify-center gap-4 rounded-2xl border border-gray-200 bg-white px-8 py-7 shadow-sm outline-none ring-offset-2 transition-[box-shadow,transform,border-color] duration-300 hover:border-gray-900 hover:shadow-[0_0_0_1px_rgb(23_23_23),0_20px_40px_-12px_rgb(0_0_0/0.25)] focus-visible:ring-2 focus-visible:ring-gray-900"
+                className="group card-interactive flex flex-1 min-w-[200px] sm:min-w-[220px] max-w-full items-center justify-center gap-4 rounded-2xl border border-gray-200 bg-white px-8 py-7 shadow-sm outline-none ring-offset-2 transition-[box-shadow,transform,border-color] duration-300 hover:border-gray-900 hover:shadow-[0_0_0_1px_rgb(23_23_23),0_20px_40px_-12px_rgb(0_0_0/0.25)] focus-visible:ring-2 focus-visible:ring-gray-900"
               >
                 <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-black text-white shadow-md ring-2 ring-transparent transition-[transform,box-shadow] duration-300 group-hover:shadow-[0_0_24px_rgb(0_0_0/0.35)]">
                   <Icon className="h-7 w-7" aria-hidden />

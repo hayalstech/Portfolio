@@ -61,7 +61,7 @@ const metrics = [
 ];
 
 export default function Web() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const containerVariants = {

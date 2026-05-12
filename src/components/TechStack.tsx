@@ -41,7 +41,7 @@ const itemVariants = {
 };
 
 export default function TechStack() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (

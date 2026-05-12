@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ArrowRightLeft, TrendingUp, Clock, RefreshCw, LineChart } from "lucide-react";
 import ExchangeRateChart from "./ExchangeRateChart";
+import Skeleton, { SkeletonCard } from "./Skeleton";
 
 interface ExchangeRates {
   [key: string]: number;

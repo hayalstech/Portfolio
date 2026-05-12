@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { useRef, type ReactNode } from "react";
+import { useRef, useState, useEffect, type ReactNode } from "react";
 
 type Props = {
   children: ReactNode;
@@ -9,17 +9,22 @@ type Props = {
 };
 
 export default function ScrollRevealSection({ children, className }: Props) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const reduce = useReducedMotion();
   const isInView = useInView(ref, { once: true, margin: "-12% 0px -12% 0px" });
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <motion.div
       ref={ref}
       className={className}
-      initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+      initial={reduce || !mounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
       animate={
-        reduce
+        reduce || !mounted
           ? { opacity: 1, y: 0 }
           : isInView
             ? { opacity: 1, y: 0 }
@@ -27,7 +32,7 @@ export default function ScrollRevealSection({ children, className }: Props) {
       }
       transition={{
         duration: reduce ? 0 : 0.55,
-        ease: [0.22, 1, 0.36, 1],
+        ease: [0.22, 1, 0.36, 1] as const,
       }}
       style={{ willChange: reduce ? undefined : "transform, opacity" }}
     >

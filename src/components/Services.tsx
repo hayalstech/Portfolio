@@ -10,7 +10,8 @@ import {
   Globe, 
   Rocket,
   CheckCircle,
-  ArrowRight
+  ArrowRight,
+  Star
 } from "lucide-react";
 
 const services = [
@@ -82,7 +83,7 @@ const services = [
 ];
 
 export default function Services() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const containerVariants = {
@@ -144,14 +145,18 @@ export default function Services() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className={`relative bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 ${
-                    service.popular ? 'ring-2 ring-blue-500 ring-offset-2' : ''
-                  }`}
+                  whileHover={{ scale: 1.03, y: -4 }}
+                  className={`relative card-interactive bg-white rounded-2xl p-8 shadow-lg border-2 ${
+                    service.popular
+                      ? 'border-amber-400 hover:border-amber-500 hover:shadow-2xl'
+                      : 'border-gray-200 hover:border-gray-900 hover:shadow-xl'
+                  } transition-all duration-300`}
                 >
                   {/* Popular Badge */}
                   {service.popular && (
                     <div className="absolute top-4 right-4">
-                      <span className="px-3 py-1 bg-blue-500 text-white text-xs font-semibold rounded-full">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-amber-400 to-amber-500 text-white text-xs font-bold rounded-full shadow-lg shadow-amber-400/30">
+                        <Star className="w-3.5 h-3.5 fill-current" />
                         Popular
                       </span>
                     </div>
@@ -182,12 +187,12 @@ export default function Services() {
                   </ul>
 
                   {/* Price */}
-                  <div className="pt-4 border-t border-gray-100">
+                  <div className="pt-4 border-t border-gray-200">
                     <div className="flex items-center justify-between">
-                      <span className="text-2xl font-bold text-gray-900">
+                      <span className="text-2xl font-bold text-gray-900 drop-shadow-sm">
                         {service.price}
                       </span>
-                      <button className="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors text-sm font-medium">
+                      <button className="btn-interactive px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors text-sm font-medium shadow-md hover:shadow-lg">
                         Get Started
                       </button>
                     </div>
@@ -204,10 +209,13 @@ export default function Services() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="inline-flex items-center gap-3 px-8 py-4 bg-black text-white font-medium rounded-lg hover:bg-gray-800 transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="btn-interactive relative inline-flex items-center gap-3 px-8 py-4 bg-black text-white font-medium rounded-lg overflow-hidden group"
             >
-              Discuss Your Project
-              <ArrowRight className="w-4 h-4" />
+              <span className="absolute inset-0 bg-gradient-to-r from-gray-700 via-gray-600 to-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              <span className="relative z-10">Discuss Your Project</span>
+              <ArrowRight className="w-4 h-4 relative z-10" />
             </motion.a>
           </motion.div>
         </motion.div>

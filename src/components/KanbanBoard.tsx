@@ -235,6 +235,7 @@ export default function KanbanBoard() {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search tasks..."
+                    aria-label="Search tasks"
                     className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
                   />
                 </div>
@@ -243,6 +244,7 @@ export default function KanbanBoard() {
                 <select
                   value={filterPriority}
                   onChange={(e) => setFilterPriority(e.target.value)}
+                  aria-label="Filter tasks by priority"
                   className="px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
                 >
                   <option value="all">All Priorities</option>
@@ -271,7 +273,8 @@ export default function KanbanBoard() {
                 <p className="text-sm text-gray-700">Loading tasks…</p>
               </div>
             ) : (
-            COLUMNS.map((column) => {
+              <>
+            {COLUMNS.map((column) => {
               const columnTasks = getTasksByColumn(column.id);
               
               return (
@@ -310,6 +313,8 @@ export default function KanbanBoard() {
                           </div>
                           <div className="flex items-center gap-1">
                             <button
+                              type="button"
+                              aria-label={`Edit task: ${task.title}`}
                               onClick={() => {
                                 setEditingTask(task);
                                 setNewTask({
@@ -323,13 +328,15 @@ export default function KanbanBoard() {
                               }}
                               className="p-1 hover:bg-gray-100 rounded"
                             >
-                              <Edit2 className="w-3 h-3 text-gray-500" />
+                              <Edit2 className="w-3 h-3 text-gray-500" aria-hidden />
                             </button>
                             <button
+                              type="button"
+                              aria-label={`Delete task: ${task.title}`}
                               onClick={() => deleteTask(task.id)}
                               className="p-1 hover:bg-gray-100 rounded"
                             >
-                              <Trash2 className="w-3 h-3 text-red-500" />
+                              <Trash2 className="w-3 h-3 text-red-500" aria-hidden />
                             </button>
                           </div>
                         </div>
@@ -369,7 +376,8 @@ export default function KanbanBoard() {
                   </div>
                 </div>
               );
-            })
+            })}
+              </>
             )}
           </motion.div>
 
@@ -394,6 +402,8 @@ export default function KanbanBoard() {
                     {editingTask ? "Edit Task" : "Create Task"}
                   </h3>
                   <button
+                    type="button"
+                    aria-label="Close task dialog"
                     onClick={() => {
                       setShowTaskModal(false);
                       setEditingTask(null);
@@ -407,16 +417,20 @@ export default function KanbanBoard() {
                     }}
                     className="p-1 hover:bg-gray-100 rounded"
                   >
-                    <X className="w-5 h-5" />
+                    <X className="w-5 h-5" aria-hidden />
                   </button>
                 </div>
 
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label
+                      htmlFor="kanban-task-title"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
                       Title
                     </label>
                     <input
+                      id="kanban-task-title"
                       type="text"
                       value={newTask.title}
                       onChange={(e) => setNewTask(prev => ({ ...prev, title: e.target.value }))}
@@ -426,10 +440,14 @@ export default function KanbanBoard() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label
+                      htmlFor="kanban-task-description"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
                       Description
                     </label>
                     <textarea
+                      id="kanban-task-description"
                       value={newTask.description}
                       onChange={(e) => setNewTask(prev => ({ ...prev, description: e.target.value }))}
                       placeholder="Task description..."
@@ -439,10 +457,14 @@ export default function KanbanBoard() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label
+                      htmlFor="kanban-task-priority"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
                       Priority
                     </label>
                     <select
+                      id="kanban-task-priority"
                       value={newTask.priority}
                       onChange={(e) => setNewTask(prev => ({ 
                         ...prev, 
@@ -457,13 +479,18 @@ export default function KanbanBoard() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label
+                      htmlFor="kanban-task-due-date"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
                       Due Date
                     </label>
                     <input
+                      id="kanban-task-due-date"
                       type="date"
                       value={newTask.dueDate}
                       onChange={(e) => setNewTask(prev => ({ ...prev, dueDate: e.target.value }))}
+                      aria-label="Task due date"
                       className="w-full px-3 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
                     />
                   </div>

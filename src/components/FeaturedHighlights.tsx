@@ -55,7 +55,7 @@ const cardVariants = {
 };
 
 export default function FeaturedHighlights() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
@@ -92,14 +92,14 @@ export default function FeaturedHighlights() {
             <motion.div
               key={highlight.title}
               variants={cardVariants}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
-              className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg transition-shadow"
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="card-interactive bg-white rounded-2xl p-6 shadow-sm border-2 border-gray-200 hover:border-gray-900 hover:shadow-lg transition-all duration-300"
             >
               <div className="w-12 h-12 bg-black text-white rounded-xl flex items-center justify-center mb-4">
                 <highlight.icon className="w-6 h-6" />
               </div>
-              <h3 className="text-lg font-bold mb-2">{highlight.title}</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <h3 className="text-lg font-bold mb-2 text-gray-900">{highlight.title}</h3>
+              <p className="text-gray-700 text-sm leading-relaxed">
                 {highlight.description}
               </p>
             </motion.div>

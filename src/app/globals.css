@@ -4,7 +4,7 @@
   --background: #ffffff;
   --foreground: #0a0a0a;
   /* ~7:1 on white — stronger than generic gray-500 for WCAG AA body text */
-  --secondary-text: #525252;
+  --secondary-text: #374151;
   --border: #e5e7eb;
   --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --card-shadow-hover: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
@@ -125,9 +125,29 @@ body {
 .btn-interactive:active {
   transform: translate3d(0, 0, 0) scale(0.98);
 }
+
+/* Card hover effects */
+.card-interactive {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform: translateZ(0);
+}
+.card-interactive:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 20px 40px -12px rgb(0 0 0 / 0.15);
+}
+
+/* Icon hover glow */
+.icon-glow:hover {
+  filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.3));
+  transition: filter 0.3s ease;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .btn-interactive:hover,
-  .btn-interactive:active {
+  .btn-interactive:active,
+  .card-interactive:hover,
+  .icon-glow:hover {
     transform: none;
+    filter: none;
   }
 }

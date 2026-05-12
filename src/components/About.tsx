@@ -9,7 +9,7 @@ const frontendSkills = ["React", "Next.js", "Tailwind CSS"];
 const backendSkills = ["API Development", "Server Logic", "Data Processing"];
 
 export default function About() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (

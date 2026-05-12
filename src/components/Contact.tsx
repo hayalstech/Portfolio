@@ -54,7 +54,7 @@ function isExternalHref(href: string) {
 }
 
 export default function Contact() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
@@ -86,7 +86,7 @@ export default function Contact() {
             Let&apos;s Build Something
           </h2>
           <p className="text-gray-800 max-w-2xl mx-auto leading-relaxed">
-            Stop compromising on speed—invite me and I’ll map a clear plan to hit
+            Stop compromising on speed—invite me and I&apos;ll map a clear plan to hit
             your UX and performance targets.
           </p>
         </motion.div>
@@ -114,16 +114,16 @@ export default function Contact() {
                     ? "noopener noreferrer"
                     : undefined
                 }
-                whileHover={{ scale: 1.02, y: -2 }}
+                whileHover={{ scale: 1.03, y: -4 }}
                 transition={{ type: "spring", stiffness: 400, damping: 28 }}
                 style={{ transform: "translateZ(0)" }}
-                className={`flex flex-col items-center rounded-2xl border p-6 transition-[box-shadow,border-color] duration-300 hover:shadow-xl ${
+                className={`card-interactive flex flex-col items-center rounded-2xl border p-6 transition-[box-shadow,border-color] duration-300 hover:shadow-xl ${
                   link.primary
                     ? "border-gray-900 bg-black text-white shadow-md hover:border-gray-800"
                     : "border-gray-300 bg-white text-gray-900 shadow-sm hover:border-gray-900"
                 }`}
               >
-                <link.icon className="mb-3 h-8 w-8" aria-hidden />
+                <link.icon className="mb-3 h-8 w-8 icon-glow" aria-hidden />
                 <span className="mb-1 font-semibold">{link.label}</span>
                 <span
                   className={
