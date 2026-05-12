@@ -1,13 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: linear-gradient(135deg, #f0f4ff 0%, #e6eefa 50%, #f0f4ff 100%);
-  --foreground: #0a0a0a;
-  /* ~7:1 on light background — stronger than generic gray-500 for WCAG AA body text */
-  --secondary-text: #1f2937;
-  --border: #d1d5db;
-  --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --card-shadow-hover: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --background: linear-gradient(135deg, #1e3c72 0%, #2a5298 25%, #7e57c2 50%, #5e35b1 75%, #311b92 100%);
+  --foreground: #ffffff;
+  --secondary-text: #e8eaf6;
+  --accent: #7c4dff;
+  --accent-light: #b388ff;
+  --accent-dark: #512da8;
+  --border: rgba(255, 255, 255, 0.2);
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --card-bg-hover: rgba(255, 255, 255, 0.15);
+  --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --card-shadow-hover: 0 8px 32px 0 rgba(31, 38, 135, 0.5);
 }
 
 /* 3D performance optimizations */

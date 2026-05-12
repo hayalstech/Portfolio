@@ -34,7 +34,7 @@ export default function Navigation() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/90 backdrop-blur-xl border-b border-gray-200/50"
+          ? "bg-gray-900/90 backdrop-blur-xl border-b border-white/20"
           : "bg-transparent"
       }`}
     >
@@ -42,7 +42,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="#home" className="flex items-center gap-2">
-            <span className="text-xl md:text-2xl font-bold tracking-tight">
+            <span className="text-xl md:text-2xl font-bold tracking-tight text-white">
               StackShift
             </span>
           </Link>
@@ -56,7 +56,7 @@ export default function Navigation() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-800 transition-transform duration-200 hover:scale-[1.03] hover:text-black"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-white transition-transform duration-200 hover:scale-[1.03] hover:text-purple-300"
                 >
                   {link.label}
                   <Github className="w-4 h-4" />
@@ -65,7 +65,7 @@ export default function Navigation() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-medium text-gray-600 hover:text-black transition-colors"
+                  className="text-sm font-medium text-white hover:text-purple-300 transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -80,9 +80,9 @@ export default function Navigation() {
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-6 h-6 text-white" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu className="w-6 h-6 text-white" />
             )}
           </button>
         </div>
@@ -96,7 +96,7 @@ export default function Navigation() {
           opacity: mobileMenuOpen ? 1 : 0,
         }}
         transition={{ duration: 0.3 }}
-        className="md:hidden overflow-hidden bg-white border-b border-gray-200"
+        className="md:hidden overflow-hidden bg-gray-900/95 backdrop-blur-xl border-b border-white/20"
       >
         <div className="px-4 py-4 space-y-3">
           {navLinks.map((link) =>
@@ -106,7 +106,7 @@ export default function Navigation() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-base font-medium text-gray-800 transition-transform duration-200 hover:scale-[1.02] hover:text-black"
+                className="flex items-center gap-2 text-base font-medium text-white transition-transform duration-200 hover:scale-[1.02] hover:text-purple-300"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}
@@ -116,7 +116,7 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block text-base font-medium text-gray-800 transition-transform duration-200 hover:scale-[1.02] hover:text-black"
+                className="block text-base font-medium text-white transition-transform duration-200 hover:scale-[1.02] hover:text-purple-300"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}

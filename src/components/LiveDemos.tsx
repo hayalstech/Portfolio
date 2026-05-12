@@ -47,7 +47,7 @@ export default function LiveDemos() {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
         style={{ backgroundImage: "url(/images/pexels-alex-dos-santos-305643819-26172887.jpg)" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/55 to-white/65" />
+      <div className="absolute inset-0 bg-gradient-to-b from-purple-900/60 via-blue-900/70 to-indigo-900/80" />
 
       <div className="container-premium relative z-10">
         <motion.div
@@ -56,10 +56,10 @@ export default function LiveDemos() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
             Projects
           </h2>
-          <p className="text-gray-800 max-w-2xl mx-auto">
+          <p className="text-gray-200 max-w-2xl mx-auto">
             Explore my live projects demonstrating full-stack development skills
           </p>
         </motion.div>
@@ -84,12 +84,12 @@ export default function LiveDemos() {
                 style={{ transform: "translateZ(0)" }}
                 whileHover={{ scale: 1.05, y: -4 }}
                 whileTap={{ scale: 0.98 }}
-                className="group card-interactive flex flex-1 min-w-[200px] sm:min-w-[220px] max-w-full items-center justify-center gap-4 rounded-2xl border border-gray-200 bg-white px-8 py-7 shadow-sm outline-none ring-offset-2 transition-[box-shadow,transform,border-color] duration-300 hover:border-gray-900 hover:shadow-[0_0_0_1px_rgb(23_23_23),0_20px_40px_-12px_rgb(0_0_0/0.25)] focus-visible:ring-2 focus-visible:ring-gray-900"
+                className="group card-interactive flex flex-1 min-w-[200px] sm:min-w-[220px] max-w-full items-center justify-center gap-4 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-sm px-8 py-7 shadow-sm outline-none ring-offset-2 transition-[box-shadow,transform,border-color] duration-300 hover:border-white/40 hover:bg-white/15 hover:shadow-[0_0_0_1px_rgb(255_255_255),0_20px_40px_-12px_rgb(0_0_0/0.25)] focus-visible:ring-2 focus-visible:ring-purple-400"
               >
-                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-black text-white shadow-md ring-2 ring-transparent transition-[transform,box-shadow] duration-300 group-hover:shadow-[0_0_24px_rgb(0_0_0/0.35)]">
+                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-purple-600 text-white shadow-md ring-2 ring-transparent transition-[transform,box-shadow] duration-300 group-hover:shadow-[0_0_24px_rgb(124_77_255/0.35)]">
                   <Icon className="h-7 w-7" aria-hidden />
                 </span>
-                <span className="text-lg font-semibold text-gray-900">
+                <span className="text-lg font-semibold text-white">
                   {demo.label}
                 </span>
               </motion.a>

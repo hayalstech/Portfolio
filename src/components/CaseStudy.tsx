@@ -52,7 +52,7 @@ export default function CaseStudy() {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80"
         style={{ backgroundImage: "url(/images/Study.jpg)" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/40 to-white/50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-purple-900/60 via-blue-900/70 to-indigo-900/80" />
       
       <div className="container-premium relative z-10">
         <motion.div
@@ -61,13 +61,13 @@ export default function CaseStudy() {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto text-center mb-12"
         >
-          <p className="text-xs font-semibold tracking-wider uppercase text-gray-900 mb-3 drop-shadow-sm">
+          <p className="text-xs font-semibold tracking-wider uppercase text-white mb-3 drop-shadow-sm">
             Featured case study
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-gray-900 drop-shadow-sm">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-white drop-shadow-sm">
             Scalable SaaS rebuild with measurable speed + cost wins
           </h2>
-          <p className="text-gray-800 leading-relaxed drop-shadow-sm">
+          <p className="text-gray-200 leading-relaxed drop-shadow-sm">
             The platform needed faster APIs, lower infrastructure costs, and a
             secure path from wireframes to production. I optimized data access
             + caching, modernized services, and shipped a production-ready MVP
@@ -83,13 +83,13 @@ export default function CaseStudy() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ y: -4, scale: 1.02 }}
-              className="card-interactive bg-white rounded-2xl border-2 border-gray-200 shadow-sm p-6 hover:border-gray-900 hover:shadow-lg transition-all duration-300"
+              className="card-interactive bg-white/10 backdrop-blur-sm rounded-2xl border-2 border-white/20 shadow-sm p-6 hover:border-white/40 hover:bg-white/15 hover:shadow-lg transition-all duration-300"
             >
-              <div className="w-11 h-11 rounded-xl bg-black text-white flex items-center justify-center mb-4">
+              <div className="w-11 h-11 rounded-xl bg-purple-600 text-white flex items-center justify-center mb-4">
                 <s.icon className="w-5 h-5" />
               </div>
-              <p className="text-sm text-gray-600 mb-1 font-medium">{s.label}</p>
-              <p className="text-2xl font-bold tracking-tight text-gray-900">
+              <p className="text-sm text-gray-300 mb-1 font-medium">{s.label}</p>
+              <p className="text-2xl font-bold tracking-tight text-white">
                 {isInView ? <AnimatedCounter value={s.value} /> : s.value}
               </p>
             </motion.div>
@@ -102,9 +102,9 @@ export default function CaseStudy() {
           transition={{ duration: 0.6, delay: 0.05 }}
           className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-6"
         >
-          <div className="card-interactive bg-white rounded-2xl border-2 border-gray-200 shadow-sm p-8 hover:border-gray-900 hover:shadow-lg transition-all duration-300">
-            <h3 className="font-semibold mb-4 text-gray-900">What changed (technical)</h3>
-            <ul className="text-sm text-gray-700 space-y-2 leading-relaxed">
+          <div className="card-interactive bg-white/10 backdrop-blur-sm rounded-2xl border-2 border-white/20 shadow-sm p-8 hover:border-white/40 hover:bg-white/15 hover:shadow-lg transition-all duration-300">
+            <h3 className="font-semibold mb-4 text-white">What changed (technical)</h3>
+            <ul className="text-sm text-gray-300 space-y-2 leading-relaxed">
               <li>- Optimized DB queries and added Redis caching.</li>
               <li>
                 - Migrated a legacy monolith toward microservices/serverless to
@@ -112,12 +112,12 @@ export default function CaseStudy() {
               </li>
               <li>- Delivered an end-to-end MVP with secure production rollout.</li>
             </ul>
-            <div className="mt-6 text-xs text-gray-600">
+            <div className="mt-6 text-xs text-gray-400">
               Stack: Next.js, React, Node.js, Redis, Postgres/MongoDB
             </div>
           </div>
 
-          <div className="card-interactive bg-black rounded-2xl shadow-sm p-8 text-white border-2 border-gray-800 hover:border-gray-600 hover:shadow-lg transition-all duration-300">
+          <div className="card-interactive bg-purple-900/50 backdrop-blur-sm rounded-2xl shadow-sm p-8 text-white border-2 border-purple-700/50 hover:border-purple-600/70 hover:bg-purple-900/70 hover:shadow-lg transition-all duration-300">
             <h3 className="font-semibold mb-4">Business impact</h3>
             <ul className="text-sm text-gray-200 space-y-2 leading-relaxed">
               <li>- 50% faster API responses via query optimization + Redis.</li>
