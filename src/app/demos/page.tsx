@@ -8,7 +8,7 @@ const demos = [
   {
     title: "Ethiopian Currency Converter",
     description: "Real-time currency exchange rates with Ethiopian Birr and historical data visualization",
-    url: "#currency",
+    url: "/interactive-demos",
     image: "/images/currency-converter.jpg",
     tech: ["React", "Node.js", "Exchange Rate API", "Chart.js"],
     features: ["Real-time Exchange Rates", "Historical Data", "Multiple Currencies", "Interactive Charts"]
@@ -16,7 +16,7 @@ const demos = [
   {
     title: "QR Code Generator",
     description: "Advanced QR code generation with customization options and bulk processing",
-    url: "#qr",
+    url: "/interactive-demos",
     image: "/images/qr-generator.jpg",
     tech: ["React", "QRCode.js", "Canvas API", "Download Functionality"],
     features: ["Custom QR Codes", "Bulk Generation", "Multiple Formats", "Color Customization"]
@@ -24,7 +24,7 @@ const demos = [
   {
     title: "Weather Dashboard",
     description: "Comprehensive weather monitoring with forecasts and interactive maps",
-    url: "#weather",
+    url: "/interactive-demos",
     image: "/images/weather-dashboard.jpg",
     tech: ["React", "Weather API", "Geolocation", "Data Visualization"],
     features: ["Current Weather", "7-Day Forecast", "Interactive Maps", "Location Search"]
@@ -32,7 +32,7 @@ const demos = [
   {
     title: "Kanban Board",
     description: "Project management tool with drag-and-drop functionality and team collaboration",
-    url: "#kanban",
+    url: "/interactive-demos",
     image: "/images/kanban-board.jpg",
     tech: ["React", "Drag & Drop API", "State Management", "LocalStorage"],
     features: ["Task Management", "Drag & Drop", "Team Collaboration", "Progress Tracking"]
@@ -40,7 +40,7 @@ const demos = [
   {
     title: "Expense Tracker",
     description: "Personal finance management with income/expense tracking and analytics",
-    url: "#expense",
+    url: "/interactive-demos",
     image: "/images/expense-tracker.jpg",
     tech: ["React", "Chart.js", "LocalStorage", "Date Processing"],
     features: ["Income/Expense Tracking", "Financial Analytics", "Budget Management", "Export Reports"]

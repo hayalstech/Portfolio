@@ -35,6 +35,11 @@ export const metadata: Metadata = {
       "Scalable SaaS & marketplace solutions with measurable speed, cost, and delivery wins.",
     type: "website",
   },
+  icons: {
+    icon: '/images/profile.png',
+    shortcut: '/images/profile.png',
+    apple: '/images/profile.png',
+  },
 };
 
 export default function RootLayout({

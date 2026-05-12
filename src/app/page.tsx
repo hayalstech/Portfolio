@@ -1,21 +1,16 @@
 import Navigation from "@/components/Navigation";
-import Hero3D from "@/components/Hero3D";
-import CaseStudy from "@/components/CaseStudy";
-import TechStack from "@/components/TechStack";
-import LiveDemos from "@/components/LiveDemos";
-import PageEntrance from "@/components/PageEntrance";
-import ScrollRevealSection from "@/components/ScrollRevealSection";
-import Services from "@/components/Services";
+import PageEntrance from "./components/PageEntrance";
+import Hero3D from "./components/Hero3D";
+import ScrollRevealSection from "./components/ScrollRevealSection";
+import CaseStudy from "./components/CaseStudy";
+import TechStack from "./components/TechStack";
+import LiveDemos from "./components/LiveDemos";
+import Services from "./components/Services";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import ComingSoon3D from "./components/ComingSoon3D";
+import Footer from "./components/Footer";
 import FeaturedHighlights from "@/components/FeaturedHighlights";
-import About from "@/components/About";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import CurrencyConverter from "@/components/CurrencyConverter";
-import QRCodeGenerator from "@/components/QRCodeGenerator";
-import WeatherDashboard from "@/components/WeatherDashboard";
-import KanbanBoard from "@/components/KanbanBoard";
-import ExpenseTracker from "@/components/ExpenseTracker";
-import ComingSoon3D from "@/components/ComingSoon3D";
 
 export default function Home() {
   return (
@@ -38,22 +33,7 @@ export default function Home() {
         <ScrollRevealSection>
           <Services />
         </ScrollRevealSection>
-        <ScrollRevealSection>
-          <CurrencyConverter />
-        </ScrollRevealSection>
-        <ScrollRevealSection>
-          <QRCodeGenerator />
-        </ScrollRevealSection>
-        <ScrollRevealSection>
-          <WeatherDashboard />
-        </ScrollRevealSection>
-        <ScrollRevealSection>
-          <KanbanBoard />
-        </ScrollRevealSection>
-        <ScrollRevealSection>
-          <ExpenseTracker />
-        </ScrollRevealSection>
-        <ScrollRevealSection>
+                <ScrollRevealSection>
           <FeaturedHighlights />
         </ScrollRevealSection>
         <ScrollRevealSection>
