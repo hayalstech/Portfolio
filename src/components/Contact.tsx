@@ -43,7 +43,7 @@ const contactLinks = [
   {
     icon: Briefcase,
     label: "Upwork",
-    href: "https://www.upwork.com/freelancers/~hayalstech",
+    href: "https://www.upwork.com/freelancers/~012040d6f690f20a0f?mp_source=share",
     description: "Hire me for projects",
     primary: false,
   },

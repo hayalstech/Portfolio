@@ -82,7 +82,7 @@ export default function ComingSoon() {
           animate={isInView ? "visible" : "hidden"}
           className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto"
         >
-          {upcomingProjects.map((project, index) => (
+          {upcomingProjects.map((project) => (
             <motion.div
               key={project.title}
               variants={itemVariants}

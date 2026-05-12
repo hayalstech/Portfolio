@@ -1,5 +1,5 @@
 import Navigation from "@/components/Navigation";
-import Hero from "@/components/Hero";
+import Hero3D from "@/components/Hero3D";
 import CaseStudy from "@/components/CaseStudy";
 import TechStack from "@/components/TechStack";
 import LiveDemos from "@/components/LiveDemos";
@@ -15,14 +15,14 @@ import QRCodeGenerator from "@/components/QRCodeGenerator";
 import WeatherDashboard from "@/components/WeatherDashboard";
 import KanbanBoard from "@/components/KanbanBoard";
 import ExpenseTracker from "@/components/ExpenseTracker";
-import ComingSoon from "@/components/ComingSoon";
+import ComingSoon3D from "@/components/ComingSoon3D";
 
 export default function Home() {
   return (
     <PageEntrance>
       <main className="min-h-screen">
         <Navigation />
-        <Hero />
+        <Hero3D />
         <ScrollRevealSection>
           <CaseStudy />
         </ScrollRevealSection>
@@ -33,7 +33,7 @@ export default function Home() {
           <LiveDemos />
         </ScrollRevealSection>
         <ScrollRevealSection>
-          <ComingSoon />
+          <ComingSoon3D />
         </ScrollRevealSection>
         <ScrollRevealSection>
           <Services />

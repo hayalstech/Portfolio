@@ -2,9 +2,8 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import { ArrowRightLeft, TrendingUp, Clock, RefreshCw, LineChart } from "lucide-react";
+import { Clock, TrendingUp, RefreshCw, ArrowRightLeft, LineChart } from "lucide-react";
 import ExchangeRateChart from "./ExchangeRateChart";
-import Skeleton, { SkeletonCard } from "./Skeleton";
 
 interface ExchangeRates {
   [key: string]: number;
@@ -199,13 +198,15 @@ export default function CurrencyConverter() {
           animate="visible"
           className="max-w-4xl mx-auto"
         >
-          {/* Header */}
-          <motion.div variants={itemVariants} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Ethiopian Birr Currency Converter
+          <motion.div variants={itemVariants} className="text-center mb-16">
+            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-gray-900">
+              Projects
+            </h3>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+              Ethiopian Currency Converter
             </h2>
-            <p className="text-gray-800 max-w-2xl mx-auto leading-relaxed">
-              Convert currencies in real-time with accurate exchange rates and interactive historical charts. Optimized with server-side caching for fast performance and reliable data.
+            <p className="text-gray-800 max-w-2xl mx-auto">
+              Real-time currency exchange rates with historical data visualization
             </p>
           </motion.div>
 

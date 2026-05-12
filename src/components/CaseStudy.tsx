@@ -49,10 +49,10 @@ export default function CaseStudy() {
     >
       {/* Background */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
-        style={{ backgroundImage: "url(/images/pexels-alex-dos-santos-305643819-26172887 (8).jpg)" }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80"
+        style={{ backgroundImage: "url(/images/Study.jpg)" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/50 to-white/60" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/40 to-white/50" />
       
       <div className="container-premium relative z-10">
         <motion.div
@@ -61,13 +61,13 @@ export default function CaseStudy() {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto text-center mb-12"
         >
-          <p className="text-xs font-semibold tracking-wider uppercase text-gray-900 mb-3">
+          <p className="text-xs font-semibold tracking-wider uppercase text-gray-900 mb-3 drop-shadow-sm">
             Featured case study
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-gray-900">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-gray-900 drop-shadow-sm">
             Scalable SaaS rebuild with measurable speed + cost wins
           </h2>
-          <p className="text-gray-800 leading-relaxed">
+          <p className="text-gray-800 leading-relaxed drop-shadow-sm">
             The platform needed faster APIs, lower infrastructure costs, and a
             secure path from wireframes to production. I optimized data access
             + caching, modernized services, and shipped a production-ready MVP
@@ -128,7 +128,7 @@ export default function CaseStudy() {
               href="#contact"
               className="btn-interactive mt-6 inline-flex items-center gap-2 text-sm font-medium text-white underline underline-offset-4 hover:opacity-90"
             >
-              Let's turn your product into a scalable growth engine
+              Let&apos;s turn your product into a scalable growth engine
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>

@@ -48,10 +48,10 @@ export default function TechStack() {
     <section className="section-padding relative overflow-hidden" ref={ref}>
       {/* Background images for TechStack */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
-        style={{ backgroundImage: "url(/images/pexels-alex-dos-santos-305643819-26172887 (7).jpg)" }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80"
+        style={{ backgroundImage: "url(/images/Tech.jpg)" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/50 to-white/60" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/40 to-white/50" />
 
       <div className="container-premium relative z-10">
         <motion.div
@@ -60,9 +60,9 @@ export default function TechStack() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Tech Stack</h2>
-          <p className="text-gray-800 max-w-2xl mx-auto">
-            Modern tooling used to ship fast, maintainable product UIs
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 drop-shadow-sm">Tech Stack</h2>
+          <p className="text-gray-800 max-w-2xl mx-auto drop-shadow-sm">
+            Modern tools and frameworks I use to build scalable applications
           </p>
         </motion.div>
 

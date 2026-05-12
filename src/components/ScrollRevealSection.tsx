@@ -15,7 +15,8 @@ export default function ScrollRevealSection({ children, className }: Props) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const timeout = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timeout);
   }, []);
 
   return (
@@ -34,7 +35,7 @@ export default function ScrollRevealSection({ children, className }: Props) {
         duration: reduce ? 0 : 0.55,
         ease: [0.22, 1, 0.36, 1] as const,
       }}
-      style={{ willChange: reduce ? undefined : "transform, opacity" }}
+      style={{ willChange: reduce ? "auto" : "transform, opacity" }}
     >
       {children}
     </motion.div>

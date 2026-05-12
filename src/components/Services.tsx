@@ -112,10 +112,10 @@ export default function Services() {
     <section className="section-padding relative overflow-hidden" ref={ref}>
       {/* Background */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
-        style={{ backgroundImage: "url(/images/pexels-alex-dos-santos-305643819-26172887 (3).jpg)" }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100"
+        style={{ backgroundImage: "url(/images/Service.jpg)" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/50 to-white/60" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-white/30 to-white/40" />
 
       <div className="container-premium relative z-10">
         <motion.div
@@ -126,12 +126,11 @@ export default function Services() {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 drop-shadow-sm">
               Services & Solutions
             </h2>
-            <p className="text-gray-800 max-w-2xl mx-auto">
-              Professional services tailored to help you build, optimize, and scale your digital products. 
-              From concept to deployment, I&apos;ve got you covered.
+            <p className="text-gray-800 max-w-2xl mx-auto drop-shadow-sm">
+              Comprehensive development services tailored to your business needs
             </p>
           </motion.div>
 

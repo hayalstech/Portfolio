@@ -3,26 +3,32 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { MessagesSquare, ShoppingCart, Building2 } from "lucide-react";
+import { ShoppingCart, Building2 } from "lucide-react";
 
 const demos = [
   {
-    label: "Forum",
-    href: "https://bejewelled-torte-5871b3.netlify.app/auth",
-    icon: MessagesSquare,
-    ariaLabel: "Open Evangadi Forum project",
+    label: "Campus Gig",
+    href: "https://extraordinary-praline-f7b13c.netlify.app/",
+    icon: Building2,
+    ariaLabel: "Open Campus Gig project",
   },
   {
-    label: "Shop",
-    href: "https://gregarious-malasada-9133b1.netlify.app/",
+    label: "Apple Clone",
+    href: "https://gleaming-lamington-621f64.netlify.app/",
     icon: ShoppingCart,
-    ariaLabel: "Open Amazon clone project",
+    ariaLabel: "Open Apple Clone project",
   },
   {
     label: "Real Estate",
     href: "https://mahi-real-estate.netlify.app/",
     icon: Building2,
     ariaLabel: "Open Mahi Real Estate project",
+  },
+  {
+    label: "Shop",
+    href: "https://gregarious-malasada-9133b1.netlify.app/",
+    icon: ShoppingCart,
+    ariaLabel: "Open Amazon clone project",
   },
 ] as const;
 
@@ -32,10 +38,10 @@ export default function LiveDemos() {
 
   return (
     <section
-      id="demos"
+      id="projects"
       ref={ref}
       className="section-padding relative overflow-hidden"
-      aria-labelledby="live-demos-heading"
+      aria-labelledby="projects-heading"
     >
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
