@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ArrowRightLeft, TrendingUp, Clock, RefreshCw, LineChart } from "lucide-react";
 import ExchangeRateChart from "./ExchangeRateChart";
@@ -65,9 +65,29 @@ export default function CurrencyConverter() {
   };
 
   // Convert currency
-  const convertCurrency = async () => {
-    if (!amount || parseFloat(amount) <= 0) return;
-    
+  const convertCurrency = useCallback(async () => {
+    const parsed = parseFloat(amount);
+    if (!Number.isFinite(parsed) || parsed <= 0) {
+      setConversion(null);
+      return;
+    }
+
+    if (!rates[fromCurrency] || !rates[toCurrency]) {
+      return;
+    }
+
+    if (fromCurrency === toCurrency) {
+      setConversion({
+        from: fromCurrency,
+        to: toCurrency,
+        amount: parsed,
+        convertedAmount: parsed,
+        rate: 1,
+        timestamp: Date.now(),
+      });
+      return;
+    }
+
     setIsConverting(true);
     try {
       const response = await fetch("/api/exchange-rates", {
@@ -78,18 +98,26 @@ export default function CurrencyConverter() {
         body: JSON.stringify({
           from: fromCurrency,
           to: toCurrency,
-          amount: parseFloat(amount),
+          amount: parsed,
         }),
       });
-      
+
+      if (!response.ok) {
+        throw new Error("Conversion request failed");
+      }
+
       const result = await response.json();
+      if (result.error) {
+        throw new Error(result.error);
+      }
       setConversion(result);
     } catch (error) {
       console.error("Conversion failed:", error);
+      setConversion(null);
     } finally {
       setIsConverting(false);
     }
-  };
+  }, [amount, fromCurrency, toCurrency, rates]);
 
   // Swap currencies
   const swapCurrencies = () => {
@@ -99,7 +127,7 @@ export default function CurrencyConverter() {
   };
 
   // Fetch historical data
-  const fetchHistoricalData = async () => {
+  const fetchHistoricalData = useCallback(async () => {
     try {
       const response = await fetch(
         `/api/historical-rates?from=${fromCurrency}&to=${toCurrency}&days=7`
@@ -109,21 +137,19 @@ export default function CurrencyConverter() {
     } catch (error) {
       console.error("Failed to fetch historical data:", error);
     }
-  };
+  }, [fromCurrency, toCurrency]);
 
-  // Auto-convert on input change
+  // Auto-convert when inputs or loaded rates change
   useEffect(() => {
-    if (amount && parseFloat(amount) > 0 && rates[fromCurrency] && rates[toCurrency]) {
-      convertCurrency();
-    }
-  }, [amount, fromCurrency, toCurrency]);
+    void convertCurrency();
+  }, [convertCurrency]);
 
   // Fetch historical data when currencies change
   useEffect(() => {
     if (fromCurrency && toCurrency && fromCurrency !== toCurrency) {
-      fetchHistoricalData();
+      void fetchHistoricalData();
     }
-  }, [fromCurrency, toCurrency]);
+  }, [fromCurrency, toCurrency, fetchHistoricalData]);
 
   // Initial fetch
   useEffect(() => {
@@ -177,7 +203,7 @@ export default function CurrencyConverter() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Ethiopian Birr Currency Converter
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-800 max-w-2xl mx-auto leading-relaxed">
               Convert currencies in real-time with accurate exchange rates and interactive historical charts. Optimized with server-side caching for fast performance and reliable data.
             </p>
           </motion.div>
@@ -186,7 +212,7 @@ export default function CurrencyConverter() {
           <motion.div variants={itemVariants} className="mb-8">
             <div className="flex items-center justify-between p-4 bg-white rounded-xl border border-gray-100 shadow-sm">
               <div className="flex items-center gap-4">
-                <div className="flex items-center gap-2 text-sm text-gray-500">
+                <div className="flex items-center gap-2 text-sm text-gray-700">
                   <Clock className="w-4 h-4" />
                   {lastUpdated ? (
                     <span>Last updated: {lastUpdated.toLocaleTimeString()}</span>
@@ -270,7 +296,11 @@ export default function CurrencyConverter() {
                     ))}
                   </select>
                   <div className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg">
-                    {conversion ? (
+                    {isConverting ? (
+                      <div className="text-sm font-medium text-gray-700">
+                        Converting…
+                      </div>
+                    ) : conversion ? (
                       <div className="text-lg font-semibold">
                         {conversion.convertedAmount.toLocaleString(undefined, {
                           minimumFractionDigits: 2,
@@ -278,7 +308,7 @@ export default function CurrencyConverter() {
                         })}
                       </div>
                     ) : (
-                      <div className="text-gray-400">Converted amount</div>
+                      <div className="text-gray-600">Converted amount</div>
                     )}
                   </div>
                 </div>
@@ -299,7 +329,7 @@ export default function CurrencyConverter() {
                       1 {conversion.from} = {conversion.rate} {conversion.to}
                     </span>
                   </div>
-                  <div className="text-sm text-gray-500">
+                  <div className="text-sm text-gray-700">
                     {new Date(conversion.timestamp).toLocaleTimeString()}
                   </div>
                 </div>
@@ -314,7 +344,7 @@ export default function CurrencyConverter() {
                 <h3 className="text-lg font-semibold">Historical Trends</h3>
                 <button
                   onClick={() => setShowChart(false)}
-                  className="text-sm text-gray-500 hover:text-gray-700"
+                  className="text-sm text-gray-700 hover:text-gray-900"
                 >
                   Hide chart
                 </button>
@@ -358,7 +388,7 @@ export default function CurrencyConverter() {
                           <span className="text-lg">{currency?.flag}</span>
                           <div>
                             <div className="font-medium">{code}</div>
-                            <div className="text-sm text-gray-500">{currency?.name}</div>
+                            <div className="text-sm text-gray-700">{currency?.name}</div>
                           </div>
                         </div>
                         <div className="text-right">

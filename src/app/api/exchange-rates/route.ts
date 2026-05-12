@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 // Cache exchange rates for 1 hour
 const CACHE_DURATION = 60 * 60 * 1000; // 1 hour in milliseconds
-let cachedRates: any = null;
+let cachedRates: Record<string, number> | null = null;
 let lastFetchTime = 0;
 
 // Fallback rates if API fails
@@ -38,27 +38,25 @@ async function fetchExchangeRates() {
   }
 }
 
-export async function GET(_request: NextRequest) {
-  const now = Date.now();
-  
-  // Check if we have cached rates that are still valid
+async function getRatesForRequest(now = Date.now()) {
   if (cachedRates && (now - lastFetchTime) < CACHE_DURATION) {
-    return NextResponse.json({
-      rates: cachedRates,
-      lastUpdated: lastFetchTime,
-      cached: true
-    });
+    return { rates: cachedRates, lastUpdated: lastFetchTime, fromCache: true };
   }
-  
-  // Fetch fresh rates
+
   const rates = await fetchExchangeRates();
   cachedRates = rates;
   lastFetchTime = now;
+
+  return { rates, lastUpdated: lastFetchTime, fromCache: false };
+}
+
+export async function GET() {
+  const { rates, lastUpdated, fromCache } = await getRatesForRequest();
   
   return NextResponse.json({
     rates,
-    lastUpdated: lastFetchTime,
-    cached: false
+    lastUpdated,
+    cached: fromCache
   });
 }
 
@@ -73,9 +71,7 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // Get current rates
-    const ratesResponse = await fetch(request.url);
-    const { rates } = await ratesResponse.json();
+    const { rates } = await getRatesForRequest();
     
     // Convert amount
     const fromRate = rates[from] || 1;
@@ -93,7 +89,7 @@ export async function POST(request: NextRequest) {
       rate: Number((toRate / fromRate).toFixed(6)),
       timestamp: Date.now()
     });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Conversion failed' },
       { status: 500 }

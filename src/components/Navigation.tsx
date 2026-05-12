@@ -56,7 +56,7 @@ export default function Navigation() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-sm font-medium text-gray-600 hover:text-black transition-colors"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-800 transition-transform duration-200 hover:scale-[1.03] hover:text-black"
                 >
                   {link.label}
                   <Github className="w-4 h-4" />
@@ -106,7 +106,7 @@ export default function Navigation() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-base font-medium text-gray-600 hover:text-black transition-colors"
+                className="flex items-center gap-2 text-base font-medium text-gray-800 transition-transform duration-200 hover:scale-[1.02] hover:text-black"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}
@@ -116,7 +116,7 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block text-base font-medium text-gray-600 hover:text-black transition-colors"
+                className="block text-base font-medium text-gray-800 transition-transform duration-200 hover:scale-[1.02] hover:text-black"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}

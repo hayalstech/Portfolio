@@ -53,7 +53,7 @@ export async function GET(request: NextRequest) {
       generated: true,
       period: `${days} days`,
     });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Failed to generate historical data' },
       { status: 500 }

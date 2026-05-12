@@ -1,14 +1,13 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { 
   QrCode, 
   Download, 
   Share2, 
   Copy, 
-  Check, 
-  Palette, 
+  Check,
   Settings,
   Link,
   Mail,
@@ -95,10 +94,9 @@ export default function QRCodeGenerator() {
   const [showSettings, setShowSettings] = useState(false);
   const [copied, setCopied] = useState(false);
   const [activeTemplate, setActiveTemplate] = useState(0);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // Generate QR Code
-  const generateQRCode = async () => {
+  const generateQRCode = useCallback(async () => {
     if (!options.text.trim()) return;
 
     setIsGenerating(true);
@@ -121,18 +119,19 @@ export default function QRCodeGenerator() {
     } finally {
       setIsGenerating(false);
     }
-  };
+  }, [options]);
 
-  // Auto-generate on text change
+  // Auto-generate on text change (generateQRCode already tracks full options)
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       if (options.text.trim()) {
-        generateQRCode();
+        void generateQRCode();
       }
     }, 500);
 
     return () => clearTimeout(timeoutId);
-  }, [options.text, options.size, options.darkColor, options.lightColor, options.errorCorrectionLevel]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- debounced regen when options change via generateQRCode
+  }, [generateQRCode]);
 
   // Download QR Code
   const downloadQRCode = (format: 'png' | 'svg') => {
@@ -410,6 +409,7 @@ export default function QRCodeGenerator() {
                       transition={{ duration: 0.3 }}
                       className="relative"
                     >
+                      {/* eslint-disable-next-line @next/next/no-img-element -- dynamic data URL from API */}
                       <img
                         src={qrResult.dataURL}
                         alt="Generated QR Code"

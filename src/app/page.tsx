@@ -2,7 +2,9 @@ import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import CaseStudy from "@/components/CaseStudy";
 import TechStack from "@/components/TechStack";
-import PortfolioGallery from "@/components/PortfolioGallery";
+import LiveDemos from "@/components/LiveDemos";
+import PageEntrance from "@/components/PageEntrance";
+import ScrollRevealSection from "@/components/ScrollRevealSection";
 import Services from "@/components/Services";
 import FeaturedHighlights from "@/components/FeaturedHighlights";
 import About from "@/components/About";
@@ -16,22 +18,50 @@ import ExpenseTracker from "@/components/ExpenseTracker";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
-      <Navigation />
-      <Hero />
-      <CaseStudy />
-      <TechStack />
-      <PortfolioGallery />
-      <Services />
-      <CurrencyConverter />
-      <QRCodeGenerator />
-      <WeatherDashboard />
-      <KanbanBoard />
-      <ExpenseTracker />
-      <FeaturedHighlights />
-      <About />
-      <Contact />
-      <Footer />
-    </main>
+    <PageEntrance>
+      <main className="min-h-screen bg-white">
+        <Navigation />
+        <Hero />
+        <ScrollRevealSection>
+          <CaseStudy />
+        </ScrollRevealSection>
+        <ScrollRevealSection>
+          <TechStack />
+        </ScrollRevealSection>
+        <ScrollRevealSection>
+          <LiveDemos />
+        </ScrollRevealSection>
+        <ScrollRevealSection>
+          <Services />
+        </ScrollRevealSection>
+        <ScrollRevealSection>
+          <CurrencyConverter />
+        </ScrollRevealSection>
+        <ScrollRevealSection>
+          <QRCodeGenerator />
+        </ScrollRevealSection>
+        <ScrollRevealSection>
+          <WeatherDashboard />
+        </ScrollRevealSection>
+        <ScrollRevealSection>
+          <KanbanBoard />
+        </ScrollRevealSection>
+        <ScrollRevealSection>
+          <ExpenseTracker />
+        </ScrollRevealSection>
+        <ScrollRevealSection>
+          <FeaturedHighlights />
+        </ScrollRevealSection>
+        <ScrollRevealSection>
+          <About />
+        </ScrollRevealSection>
+        <ScrollRevealSection>
+          <Contact />
+        </ScrollRevealSection>
+        <ScrollRevealSection>
+          <Footer />
+        </ScrollRevealSection>
+      </main>
+    </PageEntrance>
   );
 }

@@ -70,7 +70,7 @@ export default function Hero() {
 
           <motion.p
             variants={itemVariants}
-            className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed"
           >
             I build SaaS & marketplace systems end-to-end—fast APIs, efficient
             infra, and polished UX—backed by measurable wins in speed, cost, and
@@ -83,7 +83,7 @@ export default function Hero() {
           >
             <Link
               href="#case-study"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-medium rounded-lg hover:bg-gray-100 transition-all duration-200 hover:scale-105"
+              className="btn-interactive inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-medium rounded-lg hover:bg-gray-100"
             >
               View case study
               <ArrowRight className="w-4 h-4" />
@@ -91,7 +91,7 @@ export default function Hero() {
 
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 text-white font-medium rounded-lg border border-white/20 hover:bg-white/20 backdrop-blur-sm transition-all duration-200"
+              className="btn-interactive inline-flex items-center gap-2 px-8 py-4 bg-white/10 text-white font-medium rounded-lg border border-white/20 hover:bg-white/20 hover:shadow-[0_0_32px_rgb(255_255_255/0.12)] backdrop-blur-sm"
             >
               Discuss your project
               <ArrowRight className="w-4 h-4" />
@@ -101,7 +101,7 @@ export default function Hero() {
               href="https://github.com/hayalstech"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-transparent text-white font-medium rounded-lg border border-white/20 hover:bg-white/10 backdrop-blur-sm transition-all duration-200"
+              className="btn-interactive inline-flex items-center gap-2 px-8 py-4 bg-transparent text-white font-medium rounded-lg border border-white/20 hover:bg-white/10 hover:shadow-[0_0_28px_rgb(255_255_255/0.1)] backdrop-blur-sm"
             >
               <Github className="w-4 h-4" />
               GitHub Profile

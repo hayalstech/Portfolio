@@ -2,8 +2,9 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #000000;
-  --secondary-text: #6b7280;
+  --foreground: #0a0a0a;
+  /* ~7:1 on white — stronger than generic gray-500 for WCAG AA body text */
+  --secondary-text: #525252;
   --border: #e5e7eb;
   --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --card-shadow-hover: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
@@ -88,5 +89,45 @@ body {
   .bg-image-mobile {
     background-size: cover;
     background-position: center;
+  }
+}
+
+/* Subtle page shell (complements Framer page entrance) */
+@keyframes page-sheen {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .page-entrance-sheen {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: #fff;
+    animation: page-sheen 0.45s ease-out forwards;
+  }
+}
+
+/* Interactive affordances: GPU-friendly transform + opacity */
+.btn-interactive {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+  transform: translateZ(0);
+}
+.btn-interactive:hover {
+  transform: translate3d(0, -2px, 0) scale(1.02);
+  box-shadow: 0 12px 32px -12px rgb(0 0 0 / 0.25);
+}
+.btn-interactive:active {
+  transform: translate3d(0, 0, 0) scale(0.98);
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-interactive:hover,
+  .btn-interactive:active {
+    transform: none;
   }
 }

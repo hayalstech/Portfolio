@@ -1,19 +1,15 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { 
-  Plus, 
-  X, 
-  Edit2, 
-  Trash2, 
-  Calendar, 
-  Tag, 
-  Flag,
+import {
+  Plus,
+  X,
+  Edit2,
+  Trash2,
+  Calendar,
   GripVertical,
   Search,
-  Filter,
-  MoreVertical
 } from "lucide-react";
 
 interface Task {
@@ -269,13 +265,23 @@ export default function KanbanBoard() {
 
           {/* Kanban Board */}
           <motion.div variants={itemVariants} className="grid lg:grid-cols-3 gap-6">
-            {COLUMNS.map((column) => {
+            {loading ? (
+              <div className="col-span-full flex flex-col items-center justify-center gap-3 py-24">
+                <div className="h-10 w-10 animate-spin rounded-full border-2 border-black border-t-transparent" />
+                <p className="text-sm text-gray-700">Loading tasks…</p>
+              </div>
+            ) : (
+            COLUMNS.map((column) => {
               const columnTasks = getTasksByColumn(column.id);
               
               return (
                 <div
                   key={column.id}
-                  className={`${column.color} rounded-xl p-4 min-h-[400px]`}
+                  className={`${column.color} rounded-xl p-4 min-h-[400px] transition-shadow ${
+                    dragOverColumn === column.id
+                      ? "ring-2 ring-blue-500 ring-offset-2"
+                      : ""
+                  }`}
                   onDragOver={(e) => handleDragOver(e, column.id)}
                   onDrop={(e) => handleDrop(e, column.id as "todo" | "in-progress" | "done")}
                 >
@@ -363,7 +369,8 @@ export default function KanbanBoard() {
                   </div>
                 </div>
               );
-            })}
+            })
+            )}
           </motion.div>
 
           {/* Task Modal */}

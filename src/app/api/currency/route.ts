@@ -79,7 +79,7 @@ export async function GET(request: NextRequest) {
 
     if (cached) {
       return NextResponse.json({
-        ...cached as any,
+        ...(cached as Record<string, unknown>),
         cached: true,
         timestamp: new Date().toISOString(),
       });

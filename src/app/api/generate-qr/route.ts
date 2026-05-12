@@ -51,8 +51,8 @@ export async function POST(request: NextRequest) {
         errorCorrectionLevel: qrOptions.errorCorrectionLevel,
       },
     });
-  } catch (error) {
-    console.error('QR Code generation failed:', error);
+  } catch {
+    console.error('QR Code generation failed');
     return NextResponse.json(
       { error: 'Failed to generate QR code' },
       { status: 500 }
@@ -94,7 +94,7 @@ export async function GET(request: NextRequest) {
         },
       });
     }
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Failed to generate QR code' },
       { status: 500 }

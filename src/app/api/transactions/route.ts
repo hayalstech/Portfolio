@@ -211,7 +211,16 @@ export async function GET(request: NextRequest) {
     // Sort by date descending
     transactions.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-    const response: any = {
+    type TxResponse = {
+      success: boolean;
+      count: number;
+      data: Transaction[];
+      categories: typeof CATEGORIES;
+      timestamp: string;
+      analytics?: Analytics;
+    };
+
+    const response: TxResponse = {
       success: true,
       count: transactions.length,
       data: transactions,
@@ -336,9 +345,14 @@ export async function PUT(request: NextRequest) {
       );
     }
 
-    if (updates.category && updates.type && !validateCategory(updates.type, updates.category)) {
+    const mergedType =
+      updates.type ?? existingTransaction.type;
+    if (
+      updates.category &&
+      !validateCategory(mergedType, updates.category)
+    ) {
       return NextResponse.json(
-        { error: `Invalid category for ${updates.type} transaction` },
+        { error: `Invalid category for ${mergedType} transaction` },
         { status: 400 }
       );
     }
@@ -353,10 +367,14 @@ export async function PUT(request: NextRequest) {
     const updatedTransaction: Transaction = {
       ...existingTransaction,
       ...updates,
+      type: updates.type ?? existingTransaction.type,
       id: existingTransaction.id, // Prevent ID change
       createdAt: existingTransaction.createdAt, // Prevent creation date change
       updatedAt: new Date().toISOString(),
-      amount: updates.amount ? Math.round(updates.amount * 100) / 100 : existingTransaction.amount,
+      amount:
+        updates.amount !== undefined
+          ? Math.round(Number(updates.amount) * 100) / 100
+          : existingTransaction.amount,
       description: updates.description !== undefined 
         ? sanitizeDescription(updates.description) 
         : existingTransaction.description,

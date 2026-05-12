@@ -2,23 +2,20 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { 
-  Plus, 
-  X, 
-  Edit2, 
-  Trash2, 
-  TrendingUp, 
-  TrendingDown, 
+import {
+  Plus,
+  X,
+  Edit2,
+  Trash2,
+  TrendingUp,
+  TrendingDown,
   DollarSign,
-  Calendar,
-  Filter,
   Search,
   PieChart,
   BarChart3,
   ArrowUpRight,
   ArrowDownRight,
   Wallet,
-  Target
 } from "lucide-react";
 
 interface Transaction {
@@ -46,6 +43,14 @@ const CATEGORIES = {
   income: ["Salary", "Freelance", "Investments", "Business", "Other Income"],
   expense: ["Food", "Transport", "Housing", "Entertainment", "Healthcare", "Shopping", "Utilities", "Other"],
 };
+
+const CATEGORY_DOT_CLASSES = [
+  "bg-blue-500",
+  "bg-green-500",
+  "bg-yellow-500",
+  "bg-purple-500",
+  "bg-pink-500",
+] as const;
 
 export default function ExpenseTracker() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -161,11 +166,21 @@ export default function ExpenseTracker() {
 
   // Mini chart components
   const MonthlyTrendChart = ({ data }: { data: Analytics['monthlyTrend'] }) => {
-    const maxAmount = Math.max(...data.flatMap(d => [d.income, d.expenses]));
-    
+    const rawMax =
+      data.length > 0
+        ? Math.max(...data.flatMap((d) => [d.income, d.expenses]), 0)
+        : 0;
+    const maxAmount = rawMax > 0 ? rawMax : 1;
+
+    if (data.length === 0) {
+      return (
+        <p className="py-6 text-center text-sm text-gray-700">No trend data yet.</p>
+      );
+    }
+
     return (
       <div className="relative h-32 flex items-end justify-between gap-2">
-        {data.map((month, index) => (
+        {data.map((month) => (
           <div key={month.month} className="flex-1 flex flex-col items-center gap-1">
             <div className="w-full flex gap-1">
               <div
@@ -191,7 +206,15 @@ export default function ExpenseTracker() {
   const CategoryPieChart = ({ data }: { data: Analytics['topCategories'] }) => {
     const total = data.reduce((sum, cat) => sum + cat.amount, 0);
     const colors = ["bg-blue-500", "bg-green-500", "bg-yellow-500", "bg-purple-500", "bg-pink-500"];
-    
+
+    if (total <= 0 || data.length === 0) {
+      return (
+        <div className="relative flex h-32 w-32 items-center justify-center rounded-full bg-gray-100">
+          <span className="text-xs text-gray-700">No data</span>
+        </div>
+      );
+    }
+
     return (
       <div className="relative w-32 h-32">
         <div className="absolute inset-0 rounded-full overflow-hidden flex">
@@ -282,7 +305,7 @@ export default function ExpenseTracker() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Income & Expense Tracker
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-800 max-w-2xl mx-auto leading-relaxed">
               Track your income and expenses with powerful analytics and real-time insights. Built with secure transaction APIs and smart financial calculations.
             </p>
           </motion.div>
@@ -301,7 +324,7 @@ export default function ExpenseTracker() {
                   <div className="text-2xl font-bold mb-1">
                     ${analytics.totalIncome.toLocaleString()}
                   </div>
-                  <div className="text-sm text-gray-500">Total Income</div>
+                  <div className="text-sm text-gray-700">Total Income</div>
                 </div>
 
                 <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
@@ -314,7 +337,7 @@ export default function ExpenseTracker() {
                   <div className="text-2xl font-bold mb-1">
                     ${analytics.totalExpenses.toLocaleString()}
                   </div>
-                  <div className="text-sm text-gray-500">Total Expenses</div>
+                  <div className="text-sm text-gray-700">Total Expenses</div>
                 </div>
 
                 <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
@@ -325,7 +348,9 @@ export default function ExpenseTracker() {
                     <span className={`text-xs font-medium ${
                       analytics.balance >= 0 ? 'text-green-600' : 'text-red-600'
                     }`}>
-                      {analytics.balance >= 0 ? '+' : ''}{((analytics.balance / analytics.totalIncome) * 100).toFixed(1)}%
+                      {analytics.totalIncome > 0
+                        ? `${analytics.balance >= 0 ? "+" : ""}${((analytics.balance / analytics.totalIncome) * 100).toFixed(1)}%`
+                        : "—"}
                     </span>
                   </div>
                   <div className={`text-2xl font-bold mb-1 ${
@@ -333,7 +358,7 @@ export default function ExpenseTracker() {
                   }`}>
                     ${Math.abs(analytics.balance).toLocaleString()}
                   </div>
-                  <div className="text-sm text-gray-500">Net Balance</div>
+                  <div className="text-sm text-gray-700">Net Balance</div>
                 </div>
 
                 <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
@@ -346,7 +371,7 @@ export default function ExpenseTracker() {
                   <div className="text-2xl font-bold mb-1">
                     ${analytics.averageTransaction.toFixed(0)}
                   </div>
-                  <div className="text-sm text-gray-500">Avg Transaction</div>
+                  <div className="text-sm text-gray-700">Avg Transaction</div>
                 </div>
               </div>
             </motion.div>
@@ -387,7 +412,9 @@ export default function ExpenseTracker() {
                       {analytics.topCategories.map((category, index) => (
                         <div key={category.category} className="flex items-center justify-between text-sm">
                           <div className="flex items-center gap-2">
-                            <div className={`w-2 h-2 rounded bg-${['blue', 'green', 'yellow', 'purple', 'pink'][index % 5]}-500`}></div>
+                            <div
+                              className={`h-2 w-2 rounded ${CATEGORY_DOT_CLASSES[index % CATEGORY_DOT_CLASSES.length]}`}
+                            />
                             <span>{category.category}</span>
                           </div>
                           <span className="font-medium">${category.amount.toLocaleString()}</span>

@@ -3,17 +3,16 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { 
-  Zap, 
-  Globe, 
-  Server, 
-  Shield, 
-  TrendingUp, 
-  Clock, 
+import {
+  Zap,
+  Globe,
+  Server,
+  TrendingUp,
+  Clock,
   Users,
   Database,
   Cloud,
-  Lock
+  Lock,
 } from "lucide-react";
 
 const frontendTech = [

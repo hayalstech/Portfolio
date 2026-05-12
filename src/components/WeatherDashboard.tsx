@@ -1,23 +1,23 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
-import { 
-  Cloud, 
-  Sun, 
-  CloudRain, 
-  CloudSnow, 
-  Wind, 
+import type { LucideIcon } from "lucide-react";
+import {
+  Cloud,
+  Sun,
+  CloudRain,
+  CloudSnow,
+  Wind,
   Droplets,
   Eye,
   Gauge,
   Search,
   MapPin,
-  Thermometer,
   TrendingUp,
   TrendingDown,
   Calendar,
-  Clock
+  Clock,
 } from "lucide-react";
 
 interface WeatherData {
@@ -58,7 +58,7 @@ interface WeatherResponse {
   processed: boolean;
 }
 
-const WEATHER_ICONS: Record<string, any> = {
+const WEATHER_ICONS: Record<string, LucideIcon> = {
   "Clear sky": Sun,
   "Partly cloudy": Cloud,
   "Cloudy": Cloud,
@@ -84,9 +84,10 @@ export default function WeatherDashboard() {
   const [searchCity, setSearchCity] = useState("Addis Ababa");
   const [error, setError] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+  const refreshCityRef = useRef("Addis Ababa");
 
   // Fetch weather data
-  const fetchWeather = async (city: string) => {
+  const fetchWeather = useCallback(async (city: string) => {
     setLoading(true);
     setError(null);
     
@@ -96,6 +97,7 @@ export default function WeatherDashboard() {
       
       if (data.success) {
         setWeatherData(data.data);
+        refreshCityRef.current = data.data.city;
         setLastUpdated(new Date());
       } else {
         setError("Failed to fetch weather data");
@@ -106,20 +108,18 @@ export default function WeatherDashboard() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  // Auto-refresh every 5 minutes
+  // Initial load once + periodic refresh for the last successfully loaded city
   useEffect(() => {
-    fetchWeather(searchCity);
-    
+    void fetchWeather(refreshCityRef.current);
+
     const interval = setInterval(() => {
-      if (weatherData) {
-        fetchWeather(weatherData.city);
-      }
-    }, 5 * 60 * 1000); // 5 minutes
+      void fetchWeather(refreshCityRef.current);
+    }, 5 * 60 * 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [fetchWeather]);
 
   // Get weather icon
   const getWeatherIcon = (condition: string) => {
@@ -340,7 +340,7 @@ export default function WeatherDashboard() {
               <motion.div variants={itemVariants} className="mb-8">
                 <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-semibold">Today's Temperature Trend</h3>
+                    <h3 className="font-semibold">Today&apos;s Temperature Trend</h3>
                     <div className="flex items-center gap-2 text-sm text-gray-500">
                       <Clock className="w-4 h-4" />
                       Hourly forecast

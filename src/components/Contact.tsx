@@ -3,7 +3,13 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Mail, Github, Briefcase } from "lucide-react";
+import {
+  Mail,
+  Github,
+  Linkedin,
+  Phone,
+  Briefcase,
+} from "lucide-react";
 
 const contactLinks = [
   {
@@ -12,6 +18,20 @@ const contactLinks = [
     href: "mailto:hayalstech@gmail.com",
     description: "Get in touch directly",
     primary: true,
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    href: "tel:+251987037035",
+    description: "Call or message",
+    primary: false,
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/hayalsewasrat",
+    description: "Connect professionally",
+    primary: false,
   },
   {
     icon: Github,
@@ -29,6 +49,10 @@ const contactLinks = [
   },
 ];
 
+function isExternalHref(href: string) {
+  return href.startsWith("http://") || href.startsWith("https://");
+}
+
 export default function Contact() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -38,14 +62,14 @@ export default function Contact() {
       id="contact"
       ref={ref}
       className="section-padding relative overflow-hidden"
+      aria-labelledby="contact-heading"
     >
-      {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
-        style={{ backgroundImage: 'url(/images/hedd.jpg)' }}
+        style={{ backgroundImage: "url(/images/hedd.jpg)" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/50 to-white/60" />
-      
+      <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/55 to-white/65" />
+
       <div className="container-premium relative z-10">
         <div className="absolute inset-0 opacity-60 [background:radial-gradient(900px_circle_at_50%_20%,rgba(0,0,0,0.06),transparent_60%)]" />
 
@@ -55,10 +79,13 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
+          <h2
+            id="contact-heading"
+            className="text-3xl md:text-4xl font-bold mb-4 text-gray-900"
+          >
             Let&apos;s Build Something
           </h2>
-          <p className="text-gray-800 max-w-2xl mx-auto">
+          <p className="text-gray-800 max-w-2xl mx-auto leading-relaxed">
             Stop compromising on speed—invite me and I’ll map a clear plan to hit
             your UX and performance targets.
           </p>
@@ -68,33 +95,42 @@ export default function Contact() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="max-w-3xl mx-auto"
+          className="max-w-5xl mx-auto"
         >
-          <div className="grid sm:grid-cols-3 gap-4">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {contactLinks.map((link) => (
               <motion.a
                 key={link.label}
                 href={link.href}
-                target={link.href.startsWith("mailto") ? undefined : "_blank"}
-                rel={
-                  link.href.startsWith("mailto")
+                target={
+                  link.href.startsWith("mailto") || link.href.startsWith("tel:")
                     ? undefined
-                    : "noopener noreferrer"
+                    : isExternalHref(link.href)
+                      ? "_blank"
+                      : undefined
                 }
-                whileHover={{ y: -4, scale: 1.02 }}
-                transition={{ duration: 0.2 }}
-                className={`flex flex-col items-center p-6 rounded-2xl border transition-all duration-200 ${
+                rel={
+                  isExternalHref(link.href)
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+                whileHover={{ scale: 1.02, y: -2 }}
+                transition={{ type: "spring", stiffness: 400, damping: 28 }}
+                style={{ transform: "translateZ(0)" }}
+                className={`flex flex-col items-center rounded-2xl border p-6 transition-[box-shadow,border-color] duration-300 hover:shadow-xl ${
                   link.primary
-                    ? "bg-black text-white border-black hover:bg-gray-800"
-                    : "bg-white text-black border-gray-200 hover:border-gray-400 hover:shadow-lg"
+                    ? "border-gray-900 bg-black text-white shadow-md hover:border-gray-800"
+                    : "border-gray-300 bg-white text-gray-900 shadow-sm hover:border-gray-900"
                 }`}
               >
-                <link.icon className="w-8 h-8 mb-3" />
-                <span className="font-semibold mb-1">{link.label}</span>
+                <link.icon className="mb-3 h-8 w-8" aria-hidden />
+                <span className="mb-1 font-semibold">{link.label}</span>
                 <span
-                  className={`text-sm ${
-                    link.primary ? "text-gray-300" : "text-gray-500"
-                  }`}
+                  className={
+                    link.primary
+                      ? "text-sm text-gray-200"
+                      : "text-center text-sm text-gray-700"
+                  }
                 >
                   {link.description}
                 </span>

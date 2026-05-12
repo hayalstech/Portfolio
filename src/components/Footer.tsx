@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { Github, Mail, Linkedin } from "lucide-react";
+import { Github, Mail, Linkedin, Phone } from "lucide-react";
 
 const navigationLinks = [
   { label: "Home", href: "#home" },
-  { label: "Projects", href: "#demos" },
+  { label: "Live Demos", href: "#demos" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
@@ -19,12 +19,17 @@ const developerLinks = [
   {
     icon: Mail,
     label: "Email",
-    href: "mailto:hayalsew.asrat@gmail.com",
+    href: "mailto:hayalstech@gmail.com",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/in/hayalsewasrat",
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    href: "tel:+251987037035",
   },
 ];
 
@@ -58,7 +63,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-gray-600 hover:text-black transition-colors text-sm"
+                    className="text-gray-800 hover:text-black transition-colors text-sm"
                   >
                     {link.label}
                   </Link>
@@ -76,14 +81,18 @@ export default function Footer() {
                   <a
                     href={link.href}
                     target={
-                      link.href.startsWith("mailto") ? undefined : "_blank"
+                      link.href.startsWith("mailto") ||
+                      link.href.startsWith("tel:")
+                        ? undefined
+                        : "_blank"
                     }
                     rel={
-                      link.href.startsWith("mailto")
+                      link.href.startsWith("mailto") ||
+                      link.href.startsWith("tel:")
                         ? undefined
                         : "noopener noreferrer"
                     }
-                    className="flex items-center gap-2 text-gray-600 hover:text-black transition-colors text-sm"
+                    className="flex items-center gap-2 text-gray-800 hover:text-black transition-colors text-sm"
                   >
                     <link.icon className="w-4 h-4" />
                     {link.label}
@@ -96,7 +105,7 @@ export default function Footer() {
 
         {/* Divider */}
         <div className="border-t border-gray-200 mt-12 pt-8">
-          <p className="text-center text-gray-500 text-sm">
+          <p className="text-center text-gray-700 text-sm">
             © 2026 StackShift. Built by Hayalsew Asrat.
           </p>
         </div>

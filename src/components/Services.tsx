@@ -130,7 +130,7 @@ export default function Services() {
             </h2>
             <p className="text-gray-800 max-w-2xl mx-auto">
               Professional services tailored to help you build, optimize, and scale your digital products. 
-              From concept to deployment, I've got you covered.
+              From concept to deployment, I&apos;ve got you covered.
             </p>
           </motion.div>
 
