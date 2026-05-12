@@ -46,10 +46,10 @@ export default function TechStack() {
 
   return (
     <section className="section-padding relative overflow-hidden" ref={ref}>
-      {/* Background images for TechStack section */}
-      <div 
+      {/* Background images for TechStack */}
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
-        style={{ backgroundImage: 'url(/images/tech-abstract.jpg)' }}
+        style={{ backgroundImage: "url(/images/pexels-alex-dos-santos-305643819-26172887 (7).jpg)" }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/50 to-white/60" />
 

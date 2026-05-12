@@ -287,9 +287,9 @@ export default function ExpenseTracker() {
   return (
     <section className="section-padding relative overflow-hidden">
       {/* Background */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
-        style={{ backgroundImage: 'url(/images/Incomeandexpensebg.jpg)' }}
+        style={{ backgroundImage: "url(/images/17973908.jpg)" }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/50 to-white/60" />
 

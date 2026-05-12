@@ -188,7 +188,7 @@ export default function CurrencyConverter() {
       {/* Background */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
-        style={{ backgroundImage: 'url(/images/Currencybg.jpg)' }}
+        style={{ backgroundImage: 'url(/images/pexels-lazybird-1260727.jpg)' }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/50 to-white/60" />
 

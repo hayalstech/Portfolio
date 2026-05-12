@@ -229,9 +229,9 @@ export default function QRCodeGenerator() {
   return (
     <section className="section-padding relative overflow-hidden">
       {/* Background */}
-      <div 
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
-        style={{ backgroundImage: 'url(/images/QRbackground.jpg)' }}
+        style={{ backgroundImage: "url(/images/pexels-lastly-1671627.jpg)" }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/50 to-white/60" />
 

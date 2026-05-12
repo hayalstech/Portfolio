@@ -39,7 +39,7 @@ export default function LiveDemos() {
     >
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
-        style={{ backgroundImage: "url(/images/tech-abstract.jpg)" }}
+        style={{ backgroundImage: "url(/images/pexels-alex-dos-santos-305643819-26172887.jpg)" }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-white/50 via-white/55 to-white/65" />
 

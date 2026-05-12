@@ -34,9 +34,9 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden"
     >
       {/* Background images with overlay effects */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(/images/hero-bg.jpg)' }}
+      {/* Background layers */}
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
+        style={{ backgroundImage: 'url(/images/pexels-alex-dos-santos-305643819-26172887 (9).jpg)' }}
       />
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 mix-blend-overlay"

@@ -14,10 +14,10 @@ export default function About() {
 
   return (
     <section id="about" className="section-padding relative overflow-hidden" ref={ref}>
-      {/* Background images for About section */}
-      <div 
+      {/* Background images */}
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
-        style={{ backgroundImage: 'url(/images/Aboutbg.jpg)' }}
+        style={{ backgroundImage: "url(/images/pexels-alex-dos-santos-305643819-26172887 (4).jpg)" }}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-white/50 to-white/60" />
       <div className="container-premium">

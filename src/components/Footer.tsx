@@ -36,10 +36,10 @@ const developerLinks = [
 export default function Footer() {
   return (
     <footer className="relative bg-white border-t border-gray-200">
-      {/* Background Image */}
-      <div 
+      {/* Background */}
+      <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60"
-        style={{ backgroundImage: 'url(/images/Footerbg.jpg)' }}
+        style={{ backgroundImage: "url(/images/pexels-alex-dos-santos-305643819-26172887 (10).jpg)" }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/50 to-white/60" />
       <div className="relative z-10 container-premium py-16">
